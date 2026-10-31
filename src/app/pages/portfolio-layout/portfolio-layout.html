@@ -1,0 +1,29 @@
+<div class="portfolio-shell" [class.dark-theme]="darkMode()">
+  <app-sidebar
+    name="Yassine KERFAI"
+    role="Software engineer"
+    initials="YK"
+    homeHref="#hero"
+    [links]="links"
+    [activeHref]="activeHref()"
+    (click)="onSidebarClick($event)"
+  />
+
+  <div class="portfolio-frame">
+    <header class="portfolio-bar">
+      <a class="portfolio-brand" href="#hero" aria-label="Portfolio home">
+        <span class="brand-mark">YK</span>
+        <span><strong>Yassine KERFAI</strong><small>Software engineer</small></span>
+      </a>
+      <span class="bar-caption">PORTFOLIO <i></i> 2026</span>
+      <button class="theme-toggle" type="button" (click)="toggleTheme()" [attr.aria-pressed]="darkMode()" [attr.aria-label]="darkMode() ? 'Switch to light mode' : 'Switch to dark mode'">
+        <i [class]="darkMode() ? 'bi bi-sun' : 'bi bi-moon-stars'" aria-hidden="true"></i>
+        <span>{{ darkMode() ? 'Light mode' : 'Dark mode' }}</span>
+      </button>
+    </header>
+
+    <main class="portfolio-main"><router-outlet /></main>
+
+    <footer class="portfolio-footer"><span>YASSINE KERFAI</span><span>SOFTWARE ENGINEER <i>✳</i></span></footer>
+  </div>
+</div>

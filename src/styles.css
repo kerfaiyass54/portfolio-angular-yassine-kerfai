@@ -17,3 +17,6 @@ button,a{font:inherit}
 h1,h2,h3{font-family:'Space Grotesk','DM Sans',system-ui,sans-serif}
 button:focus-visible,a:focus-visible{outline:3px solid #5369e8;outline-offset:3px}
 ::selection{background:#d9f35b;color:#212722}
+.scroll-reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.75,.2,1)}
+.scroll-reveal.is-visible{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){.scroll-reveal{opacity:1;transform:none;transition:none}}

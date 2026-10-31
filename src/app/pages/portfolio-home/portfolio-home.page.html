@@ -1,0 +1,64 @@
+<div class="home-content">
+  <section class="hero-section" id="hero">
+    <div class="hero-meta"><span class="eyebrow"><i></i> PERSONAL PORTFOLIO</span><span class="hero-count">YK <span>—</span> 2026</span></div>
+    <div class="hero-main">
+      <div class="hero-copy">
+        <p class="hero-role">SOFTWARE ENGINEER <span>·</span> PORTFOLIO</p>
+        <h1>Portfolio<br /><span>Yassine KERFAI.</span></h1>
+        <p class="hero-description">I build clear, useful digital experiences and the thoughtful details that make them feel right.</p>
+        <div class="hero-actions"><a class="primary-action" href="#projects">Explore projects <i class="bi bi-arrow-down-right" aria-hidden="true"></i></a><a class="text-action" href="#links">Find my links <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a></div>
+      </div>
+      <div class="hero-art" aria-hidden="true"><div class="art-disc"><span>YK</span><i class="disc-spark">✳</i></div><span class="art-caption">IDEAS INTO<br />INTERFACES</span><span class="art-cross">+</span></div>
+    </div>
+    <a class="scroll-note" href="#details"><span>SCROLL TO EXPLORE</span><i class="bi bi-arrow-down" aria-hidden="true"></i></a>
+  </section>
+
+  <section class="content-section" id="details" appScrollReveal>
+    <div class="section-heading"><div><span class="section-index">01 / A QUICK INTRODUCTION</span><h2>Details, at a glance.</h2></div><p>A little about what I do and what I’m building.</p></div>
+    <div class="detail-grid">
+      @for (item of details; track item.label) {
+        <article class="detail-card"><span class="detail-icon"><i [class]="item.icon" aria-hidden="true"></i></span><span class="detail-label">{{ item.label }}</span><strong>{{ item.value }}</strong><i class="detail-corner bi bi-arrow-up-right" aria-hidden="true"></i></article>
+      }
+    </div>
+  </section>
+
+  <section class="content-section education-section" id="education" appScrollReveal>
+    <div class="section-heading"><div><span class="section-index">02 / EDUCATION</span><h2>Always learning.</h2></div><p>The foundations and experiences behind my work.</p></div>
+    <article class="education-card">
+      <span class="education-icon"><i class="bi bi-mortarboard" aria-hidden="true"></i></span>
+      <div><span class="education-label">EDUCATION HISTORY</span><h3>Your next chapter starts here.</h3><p>Add your degree, institution, and dates to complete this section.</p></div>
+      <span class="education-note">DETAILS TO COME <i class="bi bi-pencil-square" aria-hidden="true"></i></span>
+    </article>
+  </section>
+
+  <section class="content-section" id="skills" appScrollReveal>
+    <div class="section-heading"><div><span class="section-index">03 / SKILLS & TOOLS</span><h2>Tools I work with.</h2></div><p>A snapshot of the technologies used across this portfolio.</p></div>
+    <div class="skills-grid">
+      @for (skill of skills; track skill.name) {
+        <article class="skill-card"><i [class]="'skill-icon ' + skill.icon" aria-hidden="true"></i><span class="skill-copy"><strong>{{ skill.name }}</strong><small>{{ skill.group }}</small></span><i class="skill-arrow bi bi-arrow-up-right" aria-hidden="true"></i></article>
+      }
+    </div>
+  </section>
+
+  <section class="content-section" id="projects" appScrollReveal>
+    <div class="section-heading"><div><span class="section-index">04 / SELECTED PROJECTS</span><h2>Made with intention.</h2></div><p>A couple of pieces from this portfolio build.</p></div>
+    <div class="projects-grid">
+      @for (project of projects; track project.number) {
+        <article class="project-card">
+          <div class="project-card-top"><span class="project-number">{{ project.number }}</span><i [class]="project.icon" aria-hidden="true"></i></div>
+          <span class="project-type">{{ project.type }}</span><h3>{{ project.title }}</h3><p>{{ project.description }}</p>
+          <div class="project-tags">@for (tag of project.tags; track tag) { <span>{{ tag }}</span> }</div>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="content-section links-section" id="links" appScrollReveal>
+    <div class="section-heading"><div><span class="section-index">05 / LINKS</span><h2>Let’s stay in touch.</h2></div><p>Choose a profile and add your details when they’re ready.</p></div>
+    <div class="links-grid">
+      @for (link of links; track link.title) {
+        <article class="profile-link"><i [class]="link.icon" aria-hidden="true"></i><span><strong>{{ link.title }}</strong><small>{{ link.note }}</small></span><i class="bi bi-arrow-up-right link-arrow" aria-hidden="true"></i></article>
+      }
+    </div>
+  </section>
+</div>
