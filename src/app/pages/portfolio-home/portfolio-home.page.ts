@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
+import { HeroPageComponent } from '../../components/hero-page/hero-page.component';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
 
 @Component({
   selector: 'app-portfolio-home-page',
   standalone: true,
-  imports: [ScrollRevealDirective],
+  imports: [HeroPageComponent, ScrollRevealDirective],
   templateUrl: './portfolio-home.page.html',
   styleUrl: './portfolio-home.page.css',
 })
