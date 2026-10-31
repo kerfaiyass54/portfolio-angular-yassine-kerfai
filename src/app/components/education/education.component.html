@@ -1,22 +1,11 @@
 <section class="education-section" aria-labelledby="education-title">
-  <header class="education-heading">
-    <div><span class="education-kicker">02 / EDUCATION</span><h2 id="education-title">Always learning.</h2></div>
-    <p>The places that shaped my path into engineering.</p>
-  </header>
-
-  <div class="education-list">
-    @for (item of education; track item.number) {
-      <article class="education-card">
-        <span class="education-number">{{ item.number }}</span>
-        <span class="education-mark" aria-hidden="true"><i class="bi bi-mortarboard"></i></span>
-        <div class="education-copy"><span class="education-level">{{ item.qualification }}</span><h3>{{ item.name }}</h3><span class="education-short">{{ item.shortName }}</span></div>
-        <span class="graduation-year">{{ item.graduationYear }}</span>
-        @if (item.href) {
-          <a class="education-link" [href]="item.href" target="_blank" rel="noopener noreferrer" [attr.aria-label]="'Visit ' + item.name + ' website'"><span>VISIT SCHOOL</span><i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
-        } @else {
-          <span class="education-link muted"><span>SECONDARY</span><i class="bi bi-arrow-right" aria-hidden="true"></i></span>
-        }
-      </article>
-    }
-  </div>
+  <header class="education-heading"><div><span class="education-kicker">{{ i18n.text('education.kicker') }}</span><h2 id="education-title">{{ i18n.text('education.title') }}</h2></div><p>{{ i18n.text('education.description') }}</p></header>
+  <div class="education-list">@for (item of education; track item.number) {
+    <article class="education-card"><span class="education-number">{{ item.number }}</span><span class="education-mark" aria-hidden="true"><i class="bi bi-mortarboard"></i></span>
+      <div class="education-copy"><span class="education-level">{{ i18n.text(item.qualificationKey) }}</span><h3>{{ item.name }}</h3><span class="education-short">{{ item.shortName }}</span></div>
+      <span class="graduation-year">{{ item.graduationYear }}</span>
+      @if (item.href) { <a class="education-link" [href]="item.href" target="_blank" rel="noopener noreferrer" [attr.aria-label]="i18n.text('education.visit') + ': ' + item.name"><span>{{ i18n.text('education.visit') }}</span><i class="bi bi-arrow-up-right" aria-hidden="true"></i></a> }
+      @else { <span class="education-link muted"><span>{{ i18n.text('education.secondary') }}</span><i class="bi bi-arrow-right" aria-hidden="true"></i></span> }
+    </article>
+  }</div>
 </section>

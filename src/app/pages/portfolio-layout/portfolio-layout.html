@@ -1,29 +1,36 @@
 <div class="portfolio-shell" [class.dark-theme]="darkMode()">
   <app-sidebar
-    name="Yassine KERFAI"
-    role="Software engineer"
+    [name]="i18n.text('name.display')"
+    [role]="i18n.text('role')"
+    [navigationLabel]="i18n.text('sidebar.navigate')"
+    [languageLabel]="i18n.text('sidebar.language')"
+    [languageAriaLabel]="i18n.text('sidebar.chooseLanguage')"
+    [footerNote]="i18n.text('sidebar.footer')"
     initials="YK"
     homeHref="#hero"
-    [links]="links"
+    [links]="links()"
+    [languages]="languageOptions"
     [activeHref]="activeHref()"
+    [selectedLanguage]="i18n.language()"
+    (languageChange)="changeLanguage($event)"
     (click)="onSidebarClick($event)"
   />
 
   <div class="portfolio-frame">
     <header class="portfolio-bar">
-      <a class="portfolio-brand" href="#hero" aria-label="Portfolio home">
+      <a class="portfolio-brand" href="#hero" [attr.aria-label]="i18n.text('nav.home')">
         <span class="brand-mark">YK</span>
-        <span><strong>Yassine KERFAI</strong><small>Software engineer</small></span>
+        <span><strong>{{ i18n.text('name.display') }}</strong><small>{{ i18n.text('role') }}</small></span>
       </a>
-      <span class="bar-caption">PORTFOLIO <i></i> 2026</span>
-      <button class="theme-toggle" type="button" (click)="toggleTheme()" [attr.aria-pressed]="darkMode()" [attr.aria-label]="darkMode() ? 'Switch to light mode' : 'Switch to dark mode'">
+      <span class="bar-caption">{{ i18n.text('layout.portfolio') }} <i></i> 2026</span>
+      <button class="theme-toggle" type="button" (click)="toggleTheme()" [attr.aria-pressed]="darkMode()" [attr.aria-label]="darkMode() ? i18n.text('theme.light') : i18n.text('theme.dark')">
         <i [class]="darkMode() ? 'bi bi-sun' : 'bi bi-moon-stars'" aria-hidden="true"></i>
-        <span>{{ darkMode() ? 'Light mode' : 'Dark mode' }}</span>
+        <span>{{ darkMode() ? i18n.text('theme.light') : i18n.text('theme.dark') }}</span>
       </button>
     </header>
 
     <main class="portfolio-main"><router-outlet /></main>
 
-    <footer class="portfolio-footer"><span>YASSINE KERFAI</span><span>SOFTWARE ENGINEER <i>✳</i></span></footer>
+    <footer class="portfolio-footer"><span>{{ i18n.text('name.display') }}</span><span>{{ i18n.text('layout.footer') }} <i>✳</i></span></footer>
   </div>
 </div>

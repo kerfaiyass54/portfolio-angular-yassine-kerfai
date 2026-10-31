@@ -10,6 +10,7 @@
 .profile-monogram span{position:absolute;top:7%;right:5%;color:var(--lime);font-family:inherit;font-size:25px;letter-spacing:normal}
 .profile-identity{position:relative;z-index:1;max-width:350px}.profile-role{color:var(--accent);font-size:9px;font-weight:800;letter-spacing:.15em}
 .profile-identity h3{margin:12px 0 9px;color:var(--ink);font-family:'Space Grotesk','DM Sans',sans-serif;font-size:clamp(44px,5.6vw,72px);font-weight:650;letter-spacing:-.075em;line-height:.9;white-space:nowrap}.profile-identity h3 span{color:var(--blue)}
+:root[lang='ar'] .profile-identity h3{font-family:'Noto Sans Arabic','DM Sans',sans-serif;letter-spacing:0;line-height:1.25;white-space:normal}
 .profile-identity p{max-width:32ch;margin:0;color:var(--muted);font-size:13px;line-height:1.7}
 .profile-orbit{position:absolute;top:50%;left:12%;width:76%;height:75%;border:1px solid color-mix(in srgb,var(--blue) 28%,transparent);border-radius:50%;pointer-events:none;transform:translateY(-50%) rotate(-19deg) scaleY(.48)}
 .orbit-two{left:7%;width:86%;height:83%;border-color:color-mix(in srgb,var(--lime) 42%,transparent);transform:translateY(-50%) rotate(24deg) scaleY(.34)}

@@ -1,26 +1,15 @@
-<aside class="sidebar" aria-label="Portfolio navigation">
-  <a class="identity" [href]="homeHref()" aria-label="Go to homepage">
-    <span class="identity-mark">{{ initials() }}</span>
-    <span class="identity-copy"><strong>{{ name() }}</strong><small>{{ role() }}</small></span>
-    <span class="status-dot" aria-label="Available"></span>
+<aside class="sidebar" [attr.aria-label]="navigationLabel()">
+  <a class="identity" [href]="homeHref()" [attr.aria-label]="name()">
+    <span class="identity-mark">{{ initials() }}</span><span class="identity-copy"><strong>{{ name() }}</strong><small>{{ role() }}</small></span><span class="status-dot" aria-hidden="true"></span>
   </a>
-
-  <span class="eyebrow">Navigate</span>
-  <nav class="nav-list">
-    @for (link of links(); track link.href) {
-      <a class="nav-link" [href]="link.href" [class.active]="link.href === activeHref()" [attr.aria-current]="link.href === activeHref() ? 'page' : null">
-        <i [class]="link.icon" aria-hidden="true"></i><span>{{ link.label }}</span><i class="bi bi-arrow-up-right nav-arrow" aria-hidden="true"></i>
-      </a>
-    }
-  </nav>
-
-  <div class="sidebar-bottom">
-    <span class="eyebrow">Language</span>
-    <div class="language-switch" role="group" aria-label="Choose language">
-      @for (language of languages(); track language.code) {
-        <button type="button" [class.selected]="language.code === selectedLanguage()" [attr.aria-pressed]="language.code === selectedLanguage()" (click)="languageChange.emit(language.code)">{{ language.label }}</button>
-      }
-    </div>
-    <span class="sidebar-note">© {{ year() }} · Crafted with intent</span>
+  <span class="eyebrow">{{ navigationLabel() }}</span>
+  <nav class="nav-list">@for (link of links(); track link.href) {
+    <a class="nav-link" [href]="link.href" [class.active]="link.href === activeHref()" [attr.aria-current]="link.href === activeHref() ? 'page' : null"><i [class]="link.icon" aria-hidden="true"></i><span>{{ link.label }}</span><i class="bi bi-arrow-up-right nav-arrow" aria-hidden="true"></i></a>
+  }</nav>
+  <div class="sidebar-bottom"><span class="eyebrow">{{ languageLabel() }}</span>
+    <div class="language-switch" role="group" [attr.aria-label]="languageAriaLabel()">@for (language of languages(); track language.code) {
+      <button type="button" [class.selected]="language.code === selectedLanguage()" [attr.aria-pressed]="language.code === selectedLanguage()" (click)="languageChange.emit(language.code)">{{ language.label }}</button>
+    }</div>
+    <span class="sidebar-note">© {{ year() }} · {{ footerNote() }}</span>
   </div>
 </aside>
