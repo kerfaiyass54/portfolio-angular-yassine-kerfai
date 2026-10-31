@@ -4,6 +4,7 @@
       <button class="step-trigger" type="button" [class.current]="i === activeIndex()" [class.complete]="i < activeIndex()" [attr.aria-current]="i === activeIndex() ? 'step' : null" (click)="selectStep(i)">
         <span class="step-number">
           @if (i < activeIndex()) { <i class="bi bi-check2" aria-hidden="true"></i> }
+          @else if (step.icon) { <i [class]="step.icon" aria-hidden="true"></i> }
           @else { {{ (i + 1).toString().padStart(2, '0') }} }
         </span>
         <span class="step-name">{{ step.title }}</span>

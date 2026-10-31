@@ -2,6 +2,7 @@ import { Component, input, output, signal } from '@angular/core';
 
 export interface StepItem {
   title: string;
+  icon?: string;
   description?: string;
   content?: string;
   items?: Array<{ name: string; icon: string }>;
