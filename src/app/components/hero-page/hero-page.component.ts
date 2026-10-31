@@ -1,4 +1,4 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-hero-page',
@@ -11,6 +11,4 @@ export class HeroPageComponent {
   readonly name = input('Yassine KERFAI.');
   readonly role = input('Software engineer');
   readonly description = input('I build clear, useful digital experiences and the thoughtful details that make them feel right.');
-  readonly titleLetters = computed(() => Array.from(this.title()));
-  readonly nameLetters = computed(() => Array.from(this.name()));
 }

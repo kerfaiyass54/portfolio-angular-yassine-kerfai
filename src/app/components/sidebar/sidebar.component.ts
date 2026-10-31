@@ -13,7 +13,7 @@ export interface SidebarLink {
   styleUrl: './sidebar.component.css',
 })
 export class SidebarComponent {
-  readonly name = input('Yassine Kerfai');
+  readonly name = input('Yassine KERFAI');
   readonly role = input('Software engineer');
   readonly initials = input('YK');
   readonly homeHref = input('#home');
