@@ -9,6 +9,7 @@ import { Component, ElementRef, input, output, viewChild } from '@angular/core';
 export class ActionDialogComponent {
   private readonly dialogRef = viewChild.required<ElementRef<HTMLDialogElement>>('dialog');
   readonly buttonLabel = input('Let’s talk');
+  readonly showLauncher = input(true);
   readonly kicker = input('A good next step');
   readonly title = input('Make something matter.');
   readonly cancelLabel = input('Maybe later');

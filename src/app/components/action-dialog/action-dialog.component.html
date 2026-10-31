@@ -1,10 +1,12 @@
-<button class="launch-button" type="button" (click)="openDialog()"><span>{{ buttonLabel() }}</span><i class="bi bi-arrow-up-right" aria-hidden="true"></i></button>
+@if (showLauncher()) {
+  <button class="launch-button" type="button" (click)="openDialog()"><span>{{ buttonLabel() }}</span><i class="bi bi-arrow-up-right" aria-hidden="true"></i></button>
+}
 <dialog #dialog class="dialog" (click)="onBackdropClick($event)" (close)="closed.emit()">
   <div class="dialog-panel">
     <button class="close-button" type="button" aria-label="Close dialog" (click)="closeDialog()"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
     <span class="dialog-kicker">{{ kicker() }}</span>
     <h2>{{ title() }}</h2>
-    <p class="dialog-copy"><ng-content /></p>
+    <div class="dialog-copy"><ng-content /></div>
     <div class="dialog-actions"><button class="secondary-button" type="button" (click)="closeDialog()">{{ cancelLabel() }}</button><button class="confirm-button" type="button" (click)="confirm()">{{ confirmLabel() }}<i class="bi bi-arrow-right" aria-hidden="true"></i></button></div>
   </div>
 </dialog>

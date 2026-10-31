@@ -8,16 +8,43 @@
   <app-skills id="skills" appScrollReveal />
 
   <section class="content-section" id="projects" appScrollReveal>
-    <div class="section-heading"><div><span class="section-index">04 / SELECTED PROJECTS</span><h2>Made with intention.</h2></div><p>A couple of pieces from this portfolio build.</p></div>
-    <div class="projects-grid">
-      @for (project of projects; track project.number) {
-        <article class="project-card">
-          <div class="project-card-top"><span class="project-number">{{ project.number }}</span><i [class]="project.icon" aria-hidden="true"></i></div>
-          <span class="project-type">{{ project.type }}</span><h3>{{ project.title }}</h3><p>{{ project.description }}</p>
-          <div class="project-tags">@for (tag of project.tags; track tag) { <span>{{ tag }}</span> }</div>
-        </article>
+    <div class="section-heading"><div><span class="section-index">04 / SELECTED PROJECTS</span><h2>Made with intention.</h2></div><p>Substantial builds from my GitHub, selected for their scope and craft.</p></div>
+    <div class="projects-summary"><span><strong>{{ projects.length }}</strong> projects</span><span class="summary-dot" aria-hidden="true"></span><span>Selected from GitHub</span></div>
+    <div class="projects-carousel" aria-label="Selected projects">
+      <button class="carousel-control" type="button" aria-label="Previous project" (click)="previousProject()"><i class="bi bi-arrow-left" aria-hidden="true"></i></button>
+      <div class="projects-viewport">
+        <div class="projects-track" [class]="'projects-track carousel-' + carouselDirection + '-' + carouselAnimationKey">
+          @for (project of visibleProjects; track project.number) {
+            <button class="project-card" type="button" (click)="openProject(project)">
+              <span class="project-card-top"><span class="project-number">{{ project.number }}</span><i [class]="project.icon" aria-hidden="true"></i></span>
+              <span class="project-type">{{ project.type }}</span><span class="project-title">{{ project.title }}</span><span class="project-card-description">{{ project.description }}</span>
+              <span class="project-tags">@for (tag of project.tags; track tag) { <span>{{ tag }}</span> }</span>
+              <span class="project-cta">View project <i class="bi bi-arrow-up-right" aria-hidden="true"></i></span>
+            </button>
+          }
+        </div>
+      </div>
+      <button class="carousel-control" type="button" aria-label="Next project" (click)="nextProject()"><i class="bi bi-arrow-right" aria-hidden="true"></i></button>
+    </div>
+    <div class="carousel-dots" aria-label="Choose a project">
+      @for (project of projects; track project.number; let index = $index) {
+        <button type="button" [class.is-active]="index === activeProjectIndex" [attr.aria-label]="'Show ' + project.title" (click)="activeProjectIndex = index"></button>
       }
     </div>
+    <div class="projects-story">
+      <div class="story-intro"><span class="section-index">A BROAD PRACTICE</span><h3>From data pipelines to thoughtful interfaces.</h3></div>
+      <div class="story-stats">
+        <div><strong>07</strong><span>featured builds</span></div>
+        <div><strong>04</strong><span>product disciplines</span></div>
+        <div><strong>∞</strong><span>ways to keep learning</span></div>
+      </div>
+    </div>
+
+    @if (selectedProject; as project) {
+      <app-action-dialog #projectDialog [showLauncher]="false" [kicker]="project.type" [title]="project.title" [confirmLabel]="'Open repository'" [cancelLabel]="'Close'" (confirmed)="openRepository()" (closed)="clearSelectedProject()">
+        <app-stepper [class]="'stepper-' + project.animation" [steps]="projectSteps(project)" [showNavigationControls]="true" [large]="false" />
+      </app-action-dialog>
+    }
   </section>
 
   <section class="content-section links-section" id="links" appScrollReveal>
