@@ -4,6 +4,7 @@ export interface StepItem {
   title: string;
   description?: string;
   content?: string;
+  items?: Array<{ name: string; icon: string }>;
 }
 
 @Component({
@@ -14,6 +15,8 @@ export interface StepItem {
 })
 export class StepperComponent {
   readonly steps = input.required<StepItem[]>();
+  readonly showNavigationControls = input(true);
+  readonly large = input(false);
   readonly stepChange = output<number>();
   readonly completed = output<void>();
   protected readonly activeIndex = signal(0);
