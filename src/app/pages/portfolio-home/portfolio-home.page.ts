@@ -1,21 +1,16 @@
 import { Component } from '@angular/core';
 import { HeroPageComponent } from '../../components/hero-page/hero-page.component';
+import { ProfileDetailsComponent } from '../../components/profile-details/profile-details.component';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
 
 @Component({
   selector: 'app-portfolio-home-page',
   standalone: true,
-  imports: [HeroPageComponent, ScrollRevealDirective],
+  imports: [HeroPageComponent, ProfileDetailsComponent, ScrollRevealDirective],
   templateUrl: './portfolio-home.page.html',
   styleUrl: './portfolio-home.page.css',
 })
 export class PortfolioHomePage {
-  protected readonly details = [
-    { label: 'Role', value: 'Software engineer', icon: 'bi bi-person-gear' },
-    { label: 'Current focus', value: 'Building for the web', icon: 'bi bi-window-stack' },
-    { label: 'Working with', value: 'Angular · TypeScript', icon: 'bi bi-code-slash' },
-  ];
-
   protected readonly skills = [
     { name: 'Angular', icon: 'devicon-angular-plain', group: 'Framework' },
     { name: 'TypeScript', icon: 'devicon-typescript-plain', group: 'Language' },
