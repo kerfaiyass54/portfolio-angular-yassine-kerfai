@@ -89,8 +89,11 @@ export class PortfolioHomePage {
   protected clearSelectedProject(): void { this.selectedProject = null; }
 
   protected readonly links = [
-    { title: 'GitHub', note: 'Add your profile URL', icon: 'bi bi-github' },
-    { title: 'LinkedIn', note: 'Add your profile URL', icon: 'bi bi-linkedin' },
-    { title: 'Email', note: 'Add your preferred email', icon: 'bi bi-envelope' },
+    { title: 'GitHub', note: 'Follow my work and open-source projects', icon: 'bi bi-github', url: 'https://github.com/kerfaiyass54' },
+    { title: 'LinkedIn', note: 'Connect with me professionally', icon: 'bi bi-linkedin', url: 'https://linkedin.com/in/yassine-kerfai-14109b223' },
+    { title: 'Dev.to', note: 'Read my developer notes and articles', icon: 'bi bi-code-slash', url: 'https://dev.to/yassine_kerfai_25f1529c85' },
+    { title: 'Instagram', note: 'Find me behind the code', icon: 'bi bi-instagram', url: 'https://instagram.com/yassine.kerfai02' },
+    { title: 'Medium', note: 'Long-form ideas and technical writing', icon: 'bi bi-medium', url: 'https://medium.com/@yassine.kerfai' },
+    { title: 'Facebook', note: 'Connect with me on Facebook', icon: 'bi bi-facebook', url: 'https://fb.com/kerfai.yassine' },
   ];
 }
