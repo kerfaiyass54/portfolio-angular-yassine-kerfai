@@ -15,6 +15,10 @@ export interface SidebarLink {
 export class SidebarComponent {
   readonly name = input('Yassine KERFAI');
   readonly role = input('Software engineer');
+  readonly navigationLabel = input('Navigate');
+  readonly languageLabel = input('Language');
+  readonly languageAriaLabel = input('Choose language');
+  readonly footerNote = input('Crafted with intent');
   readonly initials = input('YK');
   readonly homeHref = input('#home');
   readonly activeHref = input('#home');
@@ -29,6 +33,7 @@ export class SidebarComponent {
     { code: 'en', label: 'EN' },
     { code: 'fr', label: 'FR' },
     { code: 'ar', label: 'AR' },
+    { code: 'de', label: 'DE' },
   ]);
   readonly selectedLanguage = input('en');
   readonly languageChange = output<string>();

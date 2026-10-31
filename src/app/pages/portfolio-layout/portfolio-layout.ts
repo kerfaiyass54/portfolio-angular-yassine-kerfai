@@ -1,6 +1,7 @@
-import { AfterViewInit, Component, HostListener, OnDestroy, signal } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnDestroy, computed, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SidebarComponent, SidebarLink } from '../../components/sidebar/sidebar.component';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-portfolio-layout',
@@ -10,21 +11,27 @@ import { SidebarComponent, SidebarLink } from '../../components/sidebar/sidebar.
   styleUrl: './portfolio-layout.css',
 })
 export class PortfolioLayout implements AfterViewInit, OnDestroy {
+  protected readonly i18n = inject(LanguageService);
   protected readonly darkMode = signal(false);
   protected readonly activeHref = signal('#hero');
-  protected readonly links: SidebarLink[] = [
-    { label: 'Home', icon: 'bi bi-house-door', href: '#hero' },
-    { label: 'Details', icon: 'bi bi-person-vcard', href: '#details' },
-    { label: 'Education', icon: 'bi bi-mortarboard', href: '#education' },
-    { label: 'Skills', icon: 'bi bi-lightning-charge', href: '#skills' },
-    { label: 'Projects', icon: 'bi bi-grid', href: '#projects' },
-    { label: 'Links', icon: 'bi bi-link-45deg', href: '#links' },
+  protected readonly links = computed<SidebarLink[]>(() => [
+    { label: this.i18n.text('nav.home'), icon: 'bi bi-house-door', href: '#hero' },
+    { label: this.i18n.text('nav.details'), icon: 'bi bi-person-vcard', href: '#details' },
+    { label: this.i18n.text('nav.education'), icon: 'bi bi-mortarboard', href: '#education' },
+    { label: this.i18n.text('nav.skills'), icon: 'bi bi-lightning-charge', href: '#skills' },
+    { label: this.i18n.text('nav.projects'), icon: 'bi bi-grid', href: '#projects' },
+    { label: this.i18n.text('nav.links'), icon: 'bi bi-link-45deg', href: '#links' },
+  ]);
+  protected readonly languageOptions = [
+    { code: 'en', label: 'EN' }, { code: 'fr', label: 'FR' }, { code: 'ar', label: 'AR' }, { code: 'de', label: 'DE' },
   ];
 
   protected toggleTheme(): void {
     this.darkMode.update((dark) => !dark);
     document.documentElement.dataset['theme'] = this.darkMode() ? 'dark' : 'light';
   }
+
+  protected changeLanguage(language: string): void { this.i18n.setLanguage(language); }
 
   protected onSidebarClick(event: MouseEvent): void {
     const href = (event.target as HTMLElement).closest('a')?.getAttribute('href');
@@ -35,7 +42,7 @@ export class PortfolioLayout implements AfterViewInit, OnDestroy {
 
   @HostListener('window:scroll')
   protected updateActiveSection(): void {
-    const active = [...this.links].reverse().find((link) => {
+    const active = [...this.links()].reverse().find((link) => {
       const section = document.querySelector(link.href);
       return section !== null && section.getBoundingClientRect().top <= window.innerHeight * 0.42;
     });

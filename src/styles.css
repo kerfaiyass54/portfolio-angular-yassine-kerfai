@@ -12,6 +12,7 @@ html[data-theme='dark']::-webkit-scrollbar-thumb{border-color:#29312e;background
 html[data-theme='dark']::-webkit-scrollbar-thumb:hover{background:#ff9b76}
 html,body,app-root{min-height:100%;background:var(--app-background)}
 body{margin:0;min-width:320px;font-family:'DM Sans',Inter,'Avenir Next',system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+:root[lang='ar'] body{font-family:'Noto Sans Arabic','DM Sans',system-ui,sans-serif}
 app-root{display:block;min-height:100vh}
 button,a{font:inherit}
 h1,h2,h3{font-family:'Space Grotesk','DM Sans',system-ui,sans-serif}

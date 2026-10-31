@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
+import { LanguageService } from '../../services/language.service';
 import { StepItem, StepperComponent } from '../stepper/stepper.component';
 
 @Component({
@@ -9,7 +10,8 @@ import { StepItem, StepperComponent } from '../stepper/stepper.component';
   styleUrl: './skills.component.css',
 })
 export class SkillsComponent {
-  protected readonly groups: StepItem[] = [
+  protected readonly i18n = inject(LanguageService);
+  private readonly items: StepItem[] = [
     {
       title: 'Languages & Frameworks',
       description: 'Programming languages and frameworks from my engineering work.',
@@ -103,4 +105,11 @@ export class SkillsComponent {
       ],
     },
   ];
+  protected readonly groups = computed(() => {
+    const keys = [
+      ['skills.programming', 'skills.programmingDescription'], ['skills.databases', 'skills.databasesDescription'],
+      ['skills.ai', 'skills.aiDescription'], ['skills.devops', 'skills.devopsDescription'], ['skills.other', 'skills.otherDescription'],
+    ];
+    return this.items.map((step, index) => ({ ...step, title: this.i18n.text(keys[index][0]), description: this.i18n.text(keys[index][1]) }));
+  });
 }

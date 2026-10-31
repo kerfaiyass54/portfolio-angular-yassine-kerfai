@@ -1,4 +1,4 @@
-<section class="stepper" [class.large-stepper]="large()" aria-label="Progress steps">
+<section class="stepper" [class.large-stepper]="large()" [attr.aria-label]="i18n.text('stepper.aria')">
   <div class="step-track">
     @for (step of steps(); track $index; let i = $index) {
       <button class="step-trigger" type="button" [class.current]="i === activeIndex()" [class.complete]="i < activeIndex()" [attr.aria-current]="i === activeIndex() ? 'step' : null" (click)="selectStep(i)">
@@ -12,18 +12,18 @@
       @if (i < steps().length - 1) { <span class="step-line" [class.filled]="i < activeIndex()" aria-hidden="true"></span> }
     }
   </div>
-  <div class="progress-rail" role="progressbar" [attr.aria-valuenow]="activeIndex() + 1" [attr.aria-valuemin]="1" [attr.aria-valuemax]="steps().length" [attr.aria-label]="'Step ' + (activeIndex() + 1) + ' of ' + steps().length">
+  <div class="progress-rail" role="progressbar" [attr.aria-valuenow]="activeIndex() + 1" [attr.aria-valuemin]="1" [attr.aria-valuemax]="steps().length" [attr.aria-label]="i18n.text('stepper.step') + ' ' + (activeIndex() + 1) + ' / ' + steps().length">
     <span class="progress-fill" [style.width.%]="steps().length > 1 ? activeIndex() / (steps().length - 1) * 100 : 100"></span>
   </div>
 
   @if (steps()[activeIndex()]; as current) {
     <div class="step-content" [class.has-step-items]="(current.items?.length ?? 0) > 0" aria-live="polite">
-      <div class="step-content-top"><span class="content-eyebrow">YOUR PROJECT, STEP BY STEP</span><span class="step-count">{{ (activeIndex() + 1).toString().padStart(2, '0') }} <span>/ {{ steps().length.toString().padStart(2, '0') }}</span></span></div>
+      <div class="step-content-top"><span class="content-eyebrow">{{ i18n.text('stepper.projectEyebrow') }}</span><span class="step-count">{{ (activeIndex() + 1).toString().padStart(2, '0') }} <span>/ {{ steps().length.toString().padStart(2, '0') }}</span></span></div>
       <h3>{{ current.title }}</h3>
       @if (current.description) { <p class="step-description">{{ current.description }}</p> }
       @if (current.content) { <p class="step-body">{{ current.content }}</p> }
       @if (current.items?.length) {
-        <ul class="step-items" aria-label="Items in this step">
+        <ul class="step-items" [attr.aria-label]="i18n.text('stepper.items')">
           @for (item of current.items; track item.name) {
             <li class="step-item" [style.--item-index]="$index"><i [class]="item.icon" aria-hidden="true"></i><span>{{ item.name }}</span></li>
           }
@@ -31,7 +31,7 @@
       }
       <ng-content />
       @if (showNavigationControls()) {
-        <div class="step-actions"><button type="button" class="back-button" [disabled]="activeIndex() === 0" (click)="previous()"><i class="bi bi-arrow-left" aria-hidden="true"></i> Back</button><button type="button" class="next-button" (click)="next()">{{ activeIndex() === steps().length - 1 ? 'Finish' : 'Continue' }}<i class="bi bi-arrow-right" aria-hidden="true"></i></button></div>
+        <div class="step-actions"><button type="button" class="back-button" [disabled]="activeIndex() === 0" (click)="previous()"><i class="bi bi-arrow-left" aria-hidden="true"></i> {{ i18n.text('stepper.back') }}</button><button type="button" class="next-button" (click)="next()">{{ i18n.text(activeIndex() === steps().length - 1 ? 'stepper.finish' : 'stepper.continue') }}<i class="bi bi-arrow-right" aria-hidden="true"></i></button></div>
       }
     </div>
   }

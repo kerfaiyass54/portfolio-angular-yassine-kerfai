@@ -1,4 +1,5 @@
-import { Component, input, output, signal } from '@angular/core';
+import { Component, inject, input, output, signal } from '@angular/core';
+import { LanguageService } from '../../services/language.service';
 
 export interface StepItem {
   title: string;
@@ -15,6 +16,7 @@ export interface StepItem {
   styleUrl: './stepper.component.css',
 })
 export class StepperComponent {
+  protected readonly i18n = inject(LanguageService);
   readonly steps = input.required<StepItem[]>();
   readonly showNavigationControls = input(true);
   readonly large = input(false);

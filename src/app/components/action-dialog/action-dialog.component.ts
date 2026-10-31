@@ -1,4 +1,5 @@
-import { Component, ElementRef, input, output, viewChild } from '@angular/core';
+import { Component, ElementRef, inject, input, output, viewChild } from '@angular/core';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-action-dialog',
@@ -7,6 +8,7 @@ import { Component, ElementRef, input, output, viewChild } from '@angular/core';
   styleUrl: './action-dialog.component.css',
 })
 export class ActionDialogComponent {
+  protected readonly i18n = inject(LanguageService);
   private readonly dialogRef = viewChild.required<ElementRef<HTMLDialogElement>>('dialog');
   readonly buttonLabel = input('Let’s talk');
   readonly showLauncher = input(true);

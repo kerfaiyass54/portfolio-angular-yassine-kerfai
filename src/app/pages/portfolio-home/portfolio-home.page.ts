@@ -1,4 +1,4 @@
-import { Component, viewChild } from '@angular/core';
+import { Component, computed, inject, viewChild } from '@angular/core';
 import { ActionDialogComponent } from '../../components/action-dialog/action-dialog.component';
 import { EducationComponent } from '../../components/education/education.component';
 import { HeroPageComponent } from '../../components/hero-page/hero-page.component';
@@ -6,6 +6,7 @@ import { ProfileDetailsComponent } from '../../components/profile-details/profil
 import { SkillsComponent } from '../../components/skills/skills.component';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
 import { StepItem, StepperComponent } from '../../components/stepper/stepper.component';
+import { LanguageService } from '../../services/language.service';
 
 interface PortfolioProject {
   number: string;
@@ -26,6 +27,7 @@ interface PortfolioProject {
   styleUrl: './portfolio-home.page.css',
 })
 export class PortfolioHomePage {
+  protected readonly i18n = inject(LanguageService);
   protected readonly projects: PortfolioProject[] = [
     { number: '01', title: 'Panini WC 26 Digital', type: 'DIGITAL EXPERIENCE', description: 'A full-stack digital collection platform combining Angular, Spring Boot, Kafka event streaming, and PostgreSQL analytics for managing and trading World Cup stickers.', tags: ['Angular 21', 'TypeScript', 'Spring Boot', 'PostgreSQL', 'MongoDB', 'Apache Kafka', 'Python', 'Docker', 'Keycloak'], icon: 'bi bi-trophy', url: 'https://github.com/kerfaiyass54/panini-wc-26-digital', animation: 'panini' },
     { number: '02', title: 'Vehicle Rental Application', type: 'FULL-STACK APPLICATION', description: 'A multi-tenant rental platform for vehicle inventory, bookings, subscriptions, repairs, role-based portals, analytics, and API documentation.', tags: ['Java 21', 'Spring Boot', 'Angular 21', 'TypeScript', 'PostgreSQL', 'Keycloak', 'Elasticsearch', 'Docker', 'Maven'], icon: 'bi bi-car-front', url: 'https://github.com/kerfaiyass54/vehicule-rental-application', animation: 'rental' },
@@ -65,8 +67,8 @@ export class PortfolioHomePage {
 
   protected projectSteps(project: PortfolioProject): StepItem[] {
     return [
-      { title: 'Title and description', icon: 'bi bi-file-earmark-text', description: project.title, content: project.description },
-      { title: 'Used technologies', icon: 'bi bi-stack', items: project.tags.map((tag) => ({ name: tag, icon: this.techIcon(tag) })) },
+      { title: this.i18n.text('projects.stepDetails'), icon: 'bi bi-file-earmark-text', description: project.title, content: project.description },
+      { title: this.i18n.text('projects.stepTech'), icon: 'bi bi-stack', items: project.tags.map((tag) => ({ name: tag, icon: this.techIcon(tag) })) },
     ];
   }
 
@@ -88,12 +90,12 @@ export class PortfolioHomePage {
 
   protected clearSelectedProject(): void { this.selectedProject = null; }
 
-  protected readonly links = [
-    { title: 'GitHub', note: 'Follow my work and open-source projects', icon: 'bi bi-github', url: 'https://github.com/kerfaiyass54' },
-    { title: 'LinkedIn', note: 'Connect with me professionally', icon: 'bi bi-linkedin', url: 'https://linkedin.com/in/yassine-kerfai-14109b223' },
-    { title: 'Dev.to', note: 'Read my developer notes and articles', icon: 'bi bi-code-slash', url: 'https://dev.to/yassine_kerfai_25f1529c85' },
-    { title: 'Instagram', note: 'Find me behind the code', icon: 'bi bi-instagram', url: 'https://instagram.com/yassine.kerfai02' },
-    { title: 'Medium', note: 'Long-form ideas and technical writing', icon: 'bi bi-medium', url: 'https://medium.com/@yassine.kerfai' },
-    { title: 'Facebook', note: 'Connect with me on Facebook', icon: 'bi bi-facebook', url: 'https://fb.com/kerfai.yassine' },
-  ];
+  protected readonly links = computed(() => [
+    { title: 'GitHub', note: this.i18n.text('links.github'), icon: 'bi bi-github', url: 'https://github.com/kerfaiyass54' },
+    { title: 'LinkedIn', note: this.i18n.text('links.linkedin'), icon: 'bi bi-linkedin', url: 'https://linkedin.com/in/yassine-kerfai-14109b223' },
+    { title: 'Dev.to', note: this.i18n.text('links.devto'), icon: 'bi bi-code-slash', url: 'https://dev.to/yassine_kerfai_25f1529c85' },
+    { title: 'Instagram', note: this.i18n.text('links.instagram'), icon: 'bi bi-instagram', url: 'https://instagram.com/yassine.kerfai02' },
+    { title: 'Medium', note: this.i18n.text('links.medium'), icon: 'bi bi-medium', url: 'https://medium.com/@yassine.kerfai' },
+    { title: 'Facebook', note: this.i18n.text('links.facebook'), icon: 'bi bi-facebook', url: 'https://fb.com/kerfai.yassine' },
+  ]);
 }

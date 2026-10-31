@@ -1,4 +1,5 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-hero-page',
@@ -7,6 +8,7 @@ import { Component, input } from '@angular/core';
   styleUrl: './hero-page.component.css',
 })
 export class HeroPageComponent {
+  protected readonly i18n = inject(LanguageService);
   readonly title = input('Portfolio');
   readonly name = input('Yassine KERFAI.');
   readonly role = input('Software engineer');

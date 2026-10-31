@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { LanguageService } from '../../services/language.service';
 
 interface EducationItem {
   number: string;
   name: string;
   shortName: string;
-  qualification: string;
+  qualificationKey: string;
   graduationYear: string;
   href?: string;
 }
@@ -16,29 +17,10 @@ interface EducationItem {
   styleUrl: './education.component.css',
 })
 export class EducationComponent {
+  protected readonly i18n = inject(LanguageService);
   protected readonly education: EducationItem[] = [
-    {
-      number: '01',
-      name: 'École Nationale d’Ingénieurs de Tunis',
-      shortName: 'ENIT',
-      qualification: 'Computer Science Engineering Degree',
-      graduationYear: '2024',
-      href: 'https://enit.rnu.tn/',
-    },
-    {
-      number: '02',
-      name: 'Institut Préparatoire aux Études d’Ingénieurs d’El Manar',
-      shortName: 'IPEIEM',
-      qualification: 'Scientific Studies · MP',
-      graduationYear: '2021',
-      href: 'https://ipeiem.rnu.tn/',
-    },
-    {
-      number: '03',
-      name: 'Lycée Laouina',
-      shortName: 'LYCÉE',
-      qualification: 'Baccalaureate · Mathematics',
-      graduationYear: '2019',
-    },
+    { number: '01', name: 'École Nationale d’Ingénieurs de Tunis', shortName: 'ENIT', qualificationKey: 'education.engineering', graduationYear: '2024', href: 'https://enit.rnu.tn/' },
+    { number: '02', name: 'Institut Préparatoire aux Études d’Ingénieurs d’El Manar', shortName: 'IPEIEM', qualificationKey: 'education.preparatory', graduationYear: '2021', href: 'https://ipeiem.rnu.tn/' },
+    { number: '03', name: 'Lycée Laouina', shortName: 'LYCÉE', qualificationKey: 'education.baccalaureate', graduationYear: '2019' },
   ];
 }

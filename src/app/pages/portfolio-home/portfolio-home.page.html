@@ -1,62 +1,42 @@
 <div class="home-content">
   <app-hero-page />
-
   <app-profile-details id="details" appScrollReveal />
-
   <app-education id="education" appScrollReveal />
-
   <app-skills id="skills" appScrollReveal />
 
   <section class="content-section" id="projects" appScrollReveal>
-    <div class="section-heading"><div><span class="section-index">04 / SELECTED PROJECTS</span><h2>Made with intention.</h2></div><p>Substantial builds from my GitHub, selected for their scope and craft.</p></div>
-    <div class="projects-summary"><span><strong>{{ projects.length }}</strong> projects</span><span class="summary-dot" aria-hidden="true"></span><span>Selected from GitHub</span></div>
-    <div class="projects-carousel" aria-label="Selected projects">
-      <button class="carousel-control" type="button" aria-label="Previous project" (click)="previousProject()"><i class="bi bi-arrow-left" aria-hidden="true"></i></button>
-      <div class="projects-viewport">
-        <div class="projects-track" [class]="'projects-track carousel-' + carouselDirection + '-' + carouselAnimationKey">
-          @for (project of visibleProjects; track project.number) {
-            <button class="project-card" type="button" (click)="openProject(project)">
-              <span class="project-card-top"><span class="project-number">{{ project.number }}</span><i [class]="project.icon" aria-hidden="true"></i></span>
-              <span class="project-type">{{ project.type }}</span><span class="project-title">{{ project.title }}</span><span class="project-card-description">{{ project.description }}</span>
-              <span class="project-tags">@for (tag of project.tags; track tag) { <span>{{ tag }}</span> }</span>
-              <span class="project-cta">View project <i class="bi bi-arrow-up-right" aria-hidden="true"></i></span>
-            </button>
-          }
-        </div>
-      </div>
-      <button class="carousel-control" type="button" aria-label="Next project" (click)="nextProject()"><i class="bi bi-arrow-right" aria-hidden="true"></i></button>
+    <div class="section-heading"><div><span class="section-index">{{ i18n.text('projects.kicker') }}</span><h2>{{ i18n.text('projects.title') }}</h2></div><p>{{ i18n.text('projects.description') }}</p></div>
+    <div class="projects-summary"><span><strong>{{ projects.length }}</strong> {{ i18n.text('projects.summary') }}</span><span class="summary-dot" aria-hidden="true"></span><span>{{ i18n.text('projects.selected') }}</span></div>
+    <div class="projects-carousel" [attr.aria-label]="i18n.text('projects.aria')">
+      <button class="carousel-control" type="button" [attr.aria-label]="i18n.text('projects.previous')" (click)="previousProject()"><i class="bi bi-arrow-left" aria-hidden="true"></i></button>
+      <div class="projects-viewport"><div class="projects-track" [class]="'projects-track carousel-' + carouselDirection + '-' + carouselAnimationKey">
+        @for (project of visibleProjects; track project.number) {
+          <button class="project-card" type="button" (click)="openProject(project)">
+            <span class="project-card-top"><span class="project-number">{{ project.number }}</span><i [class]="project.icon" aria-hidden="true"></i></span>
+            <span class="project-type">{{ project.type }}</span><span class="project-title">{{ project.title }}</span><span class="project-card-description">{{ project.description }}</span>
+            <span class="project-tags">@for (tag of project.tags; track tag) { <span>{{ tag }}</span> }</span>
+            <span class="project-cta">{{ i18n.text('projects.view') }} <i class="bi bi-arrow-up-right" aria-hidden="true"></i></span>
+          </button>
+        }
+      </div></div>
+      <button class="carousel-control" type="button" [attr.aria-label]="i18n.text('projects.next')" (click)="nextProject()"><i class="bi bi-arrow-right" aria-hidden="true"></i></button>
     </div>
-    <div class="carousel-dots" aria-label="Choose a project">
-      @for (project of projects; track project.number; let index = $index) {
-        <button type="button" [class.is-active]="index === activeProjectIndex" [attr.aria-label]="'Show ' + project.title" (click)="activeProjectIndex = index"></button>
-      }
+    <div class="carousel-dots" [attr.aria-label]="i18n.text('projects.aria')">
+      @for (project of projects; track project.number; let index = $index) { <button type="button" [class.is-active]="index === activeProjectIndex" [attr.aria-label]="i18n.text('projects.show') + ' ' + project.title" (click)="activeProjectIndex = index"></button> }
     </div>
-    <div class="projects-story">
-      <div class="story-intro"><span class="section-index">A BROAD PRACTICE</span><h3>From data pipelines to thoughtful interfaces.</h3></div>
-      <div class="story-stats">
-        <div><strong>07</strong><span>featured builds</span></div>
-        <div><strong>04</strong><span>product disciplines</span></div>
-        <div><strong>∞</strong><span>ways to keep learning</span></div>
-      </div>
+    <div class="projects-story"><div class="story-intro"><span class="section-index">{{ i18n.text('projects.story') }}</span><h3>{{ i18n.text('projects.storyTitle') }}</h3></div>
+      <div class="story-stats"><div><strong>07</strong><span>{{ i18n.text('projects.builds') }}</span></div><div><strong>04</strong><span>{{ i18n.text('projects.disciplines') }}</span></div><div><strong>∞</strong><span>{{ i18n.text('projects.learning') }}</span></div></div>
     </div>
-
     @if (selectedProject; as project) {
-      <app-action-dialog #projectDialog [showLauncher]="false" [kicker]="project.type" [title]="project.title" [confirmLabel]="'Open repository'" [cancelLabel]="'Close'" (confirmed)="openRepository()" (closed)="clearSelectedProject()">
+      <app-action-dialog #projectDialog [showLauncher]="false" [kicker]="project.type" [title]="project.title" [confirmLabel]="i18n.text('projects.dialogOpen')" [cancelLabel]="i18n.text('projects.dialogClose')" (confirmed)="openRepository()" (closed)="clearSelectedProject()">
         <app-stepper [class]="'stepper-' + project.animation" [steps]="projectSteps(project)" [showNavigationControls]="true" [large]="false" />
       </app-action-dialog>
     }
   </section>
 
   <section class="content-section links-section" id="links" appScrollReveal>
-    <div class="section-heading"><div><span class="section-index">05 / LINKS</span><h2>Let’s stay in touch.</h2></div><p>Follow the work, explore the repository archive, and keep up with what comes next.</p></div>
-    <div class="links-grid">
-      @for (link of links; track link.title) {
-        <a class="profile-link" [href]="link.url" target="_blank" rel="noopener noreferrer"><i class="link-icon" [class]="link.icon" aria-hidden="true"></i><span><strong>{{ link.title }}</strong><small>{{ link.note }}</small></span><i class="bi bi-arrow-up-right link-arrow" aria-hidden="true"></i></a>
-      }
-    </div>
-    <div class="contact-banner">
-      <div><span class="section-index">OPEN TO GOOD CONVERSATIONS</span><h3>Have an idea worth building?</h3></div>
-      <a href="https://github.com/kerfaiyass54" target="_blank" rel="noopener noreferrer">Start with GitHub <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
-    </div>
+    <div class="section-heading"><div><span class="section-index">{{ i18n.text('links.kicker') }}</span><h2>{{ i18n.text('links.title') }}</h2></div><p>{{ i18n.text('links.description') }}</p></div>
+    <div class="links-grid">@for (link of links(); track link.title) { <a class="profile-link" [href]="link.url" target="_blank" rel="noopener noreferrer"><i class="link-icon" [class]="link.icon" aria-hidden="true"></i><span><strong>{{ link.title }}</strong><small>{{ link.note }}</small></span><i class="bi bi-arrow-up-right link-arrow" aria-hidden="true"></i></a> }</div>
+    <div class="contact-banner"><div><span class="section-index">{{ i18n.text('contact.kicker') }}</span><h3>{{ i18n.text('contact.title') }}</h3></div><a href="https://github.com/kerfaiyass54" target="_blank" rel="noopener noreferrer">{{ i18n.text('contact.action') }} <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a></div>
   </section>
 </div>
