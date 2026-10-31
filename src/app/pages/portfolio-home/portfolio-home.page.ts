@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { EducationComponent } from '../../components/education/education.component';
 import { HeroPageComponent } from '../../components/hero-page/hero-page.component';
 import { ProfileDetailsComponent } from '../../components/profile-details/profile-details.component';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
@@ -6,7 +7,7 @@ import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive'
 @Component({
   selector: 'app-portfolio-home-page',
   standalone: true,
-  imports: [HeroPageComponent, ProfileDetailsComponent, ScrollRevealDirective],
+  imports: [HeroPageComponent, ProfileDetailsComponent, EducationComponent, ScrollRevealDirective],
   templateUrl: './portfolio-home.page.html',
   styleUrl: './portfolio-home.page.css',
 })

@@ -1,0 +1,22 @@
+:host{display:block;scroll-margin-top:24px}
+.education-section{display:flex;min-height:760px;flex-direction:column;padding:75px 0 20px}
+.education-heading{display:flex;align-items:end;justify-content:space-between;gap:22px;margin-bottom:25px}
+.education-kicker{color:var(--accent);font-size:10px;font-weight:800;letter-spacing:.14em}
+.education-heading h2{margin:11px 0 0;color:var(--ink);font-family:'Space Grotesk','DM Sans',sans-serif;font-size:clamp(34px,4.5vw,54px);font-weight:650;letter-spacing:-.07em;line-height:1}
+.education-heading>p{max-width:33ch;margin:0 0 2px;color:var(--muted);font-size:13px;line-height:1.7}
+.education-list{position:relative;display:flex;flex:1;flex-direction:column;gap:14px;padding-left:18px}
+.education-list:before{position:absolute;top:30px;bottom:30px;left:35px;width:1px;background:linear-gradient(var(--accent),var(--line) 76%,transparent);content:""}
+.education-card{position:relative;display:grid;flex:1;grid-template-columns:38px 62px minmax(0,1fr) 58px minmax(125px,auto);align-items:center;gap:18px;min-height:145px;padding:23px 27px 23px 0;border:1px solid var(--line);border-radius:19px;background:var(--panel);transition:transform .25s,border-color .25s,box-shadow .25s}
+.education-card:hover{transform:translateX(5px);border-color:var(--accent);box-shadow:0 17px 38px #20251a10}
+.education-number{position:relative;z-index:1;display:grid;width:36px;height:36px;place-items:center;border:1px solid var(--line);border-radius:50%;background:var(--page);color:var(--accent);font-size:10px;font-weight:800;letter-spacing:.08em}
+.education-mark{display:grid;width:54px;height:54px;place-items:center;border-radius:16px;background:var(--panel-soft);color:var(--blue);font-size:23px;transition:transform .25s,background .25s,color .25s}
+.education-card:hover .education-mark{transform:rotate(-7deg) scale(1.05);background:var(--accent);color:white}
+.education-copy{min-width:0}.education-level{color:var(--quiet);font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.education-copy h3{margin:8px 0 7px;color:var(--ink);font-family:'Space Grotesk','DM Sans',sans-serif;font-size:clamp(19px,2.4vw,28px);font-weight:650;letter-spacing:-.045em;line-height:1.12}
+.education-short{display:inline-flex;padding:5px 9px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:9px;font-weight:750;letter-spacing:.08em}
+.graduation-year{color:var(--accent);font-family:'Space Grotesk','DM Sans',sans-serif;font-size:20px;font-weight:700;letter-spacing:-.04em}
+.education-link{display:inline-flex;align-items:center;justify-content:flex-end;gap:11px;color:var(--accent);font-size:9px;font-weight:800;letter-spacing:.12em;text-decoration:none;white-space:nowrap;transition:gap .2s,color .2s}
+.education-link:hover{gap:16px;color:var(--blue)}.education-link>i{font-size:15px}.education-link.muted{color:var(--quiet)}
+@media(max-width:850px){.education-section{min-height:700px}.education-card{grid-template-columns:38px 52px minmax(0,1fr) 52px 100px;gap:12px;padding-right:17px}.education-mark{width:48px;height:48px}.education-link{font-size:8px}}
+@media(max-width:650px){.education-section{min-height:max(700px,100svh);padding-top:56px}.education-heading{align-items:flex-start;flex-direction:column;gap:10px}.education-heading>p{max-width:45ch}.education-list{gap:11px;padding-left:11px}.education-list:before{left:28px}.education-card{grid-template-columns:34px 44px minmax(0,1fr);grid-template-rows:auto auto auto;gap:9px 10px;min-height:180px;padding:17px 14px 17px 0}.education-number{width:32px;height:32px;font-size:9px}.education-mark{width:42px;height:42px;border-radius:13px;font-size:19px}.education-copy h3{font-size:18px}.graduation-year{grid-column:3;grid-row:2;font-size:17px}.education-link{grid-column:3;grid-row:3;justify-content:flex-start;margin-top:-2px}.education-link.muted{display:none}}
+@media(max-width:390px){.education-card{grid-template-columns:30px 38px minmax(0,1fr);gap:8px}.education-mark{width:36px;height:36px}.education-copy h3{font-size:16px}.education-copy .education-level{font-size:8px}}
