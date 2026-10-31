@@ -8,8 +8,8 @@
     <div class="hero-copy">
       <p class="hero-role">{{ role() }} <span>·</span> PORTFOLIO</p>
       <h1 class="hero-title" [attr.aria-label]="title() + ' ' + name()">
-        <span class="title-line" aria-hidden="true"><span class="letter-run">@for (character of titleLetters(); track $index) {<span class="letter" [style.--letter-index]="$index">{{ character }}</span>}</span></span>
-        <span class="title-line title-name" aria-hidden="true"><span class="letter-run">@for (character of nameLetters(); track $index) {<span class="letter" [style.--letter-index]="$index">{{ character }}</span>}</span></span>
+        <span class="title-line" aria-hidden="true">{{ title() }}</span>
+        <span class="title-line title-name" aria-hidden="true">{{ name() }}</span>
       </h1>
       <p class="hero-description">{{ description() }}</p>
       <div class="hero-actions">

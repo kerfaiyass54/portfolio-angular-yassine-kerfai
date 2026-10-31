@@ -11,6 +11,9 @@ export class ScrollRevealDirective implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     const node = this.element.nativeElement;
+    Array.from(node.children).forEach((child, index) => {
+      (child as HTMLElement).style.setProperty('--reveal-index', index.toString());
+    });
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
       node.classList.add('is-visible');
       return;
