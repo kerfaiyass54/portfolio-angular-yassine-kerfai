@@ -1,0 +1,14 @@
+<article class="flip-card" tabindex="0" [attr.aria-label]="ariaLabel()">
+  <div class="flip-inner">
+    <section class="face front">
+      <span class="face-label">{{ frontLabel() }}</span>
+      <div class="front-content"><ng-content select="[card-front]" /></div>
+      <span class="flip-hint"><i class="bi bi-arrow-repeat" aria-hidden="true"></i> Hover or focus to turn</span>
+    </section>
+    <section class="face back">
+      <span class="face-label">{{ backLabel() }}</span>
+      <div class="back-content"><ng-content select="[card-back]" /></div>
+      <span class="back-mark" aria-hidden="true">↗</span>
+    </section>
+  </div>
+</article>
