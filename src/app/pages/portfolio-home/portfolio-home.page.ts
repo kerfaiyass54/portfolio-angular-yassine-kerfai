@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, computed, inject, viewChild } from '@angular/core';
+import { Component, ChangeDetectionStrategy, DestroyRef, computed, inject, viewChild } from '@angular/core';
 import { ActionDialogComponent } from '../../components/action-dialog/action-dialog.component';
 import { EducationComponent } from '../../components/education/education.component';
 import { HeroPageComponent } from '../../components/hero-page/hero-page.component';
@@ -29,6 +29,7 @@ interface PortfolioProject {
 })
 export class PortfolioHomePage {
   protected readonly i18n = inject(LanguageService);
+  private readonly destroyRef = inject(DestroyRef);
   protected readonly projects: PortfolioProject[] = [
     { number: '01', title: 'Panini WC 26 Digital', type: 'DIGITAL EXPERIENCE', description: 'A full-stack digital collection platform combining Angular, Spring Boot, Kafka event streaming, and PostgreSQL analytics for managing and trading World Cup stickers.', tags: ['Angular 21', 'TypeScript', 'Spring Boot', 'PostgreSQL', 'MongoDB', 'Apache Kafka', 'Python', 'Docker', 'Keycloak'], icon: 'bi bi-trophy', url: 'https://github.com/kerfaiyass54/panini-wc-26-digital', animation: 'panini' },
     { number: '02', title: 'Vehicle Rental Application', type: 'FULL-STACK APPLICATION', description: 'A multi-tenant rental platform for vehicle inventory, bookings, subscriptions, repairs, role-based portals, analytics, and API documentation.', tags: ['Java 21', 'Spring Boot', 'Angular 21', 'TypeScript', 'PostgreSQL', 'Keycloak', 'Elasticsearch', 'Docker', 'Maven'], icon: 'bi bi-car-front', url: 'https://github.com/kerfaiyass54/vehicule-rental-application', animation: 'rental' },
@@ -63,7 +64,9 @@ export class PortfolioHomePage {
 
   protected openProject(project: PortfolioProject): void {
     this.selectedProject = project;
-    queueMicrotask(() => this.projectDialog().openDialog());
+    queueMicrotask(() => {
+      if (!this.destroyRef.destroyed) this.projectDialog().openDialog();
+    });
   }
 
   protected projectSteps(project: PortfolioProject): StepItem[] {
