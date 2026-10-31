@@ -1,7 +1,8 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, computed, inject } from '@angular/core';
 import { LanguageService } from '../../services/language.service';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-profile-details',
   standalone: true,
   templateUrl: './profile-details.component.html',

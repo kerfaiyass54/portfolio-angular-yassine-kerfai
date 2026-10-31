@@ -1,7 +1,8 @@
-import { Component, ElementRef, inject, input, output, viewChild } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ElementRef, inject, input, output, viewChild } from '@angular/core';
 import { LanguageService } from '../../services/language.service';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-action-dialog',
   standalone: true,
   templateUrl: './action-dialog.component.html',

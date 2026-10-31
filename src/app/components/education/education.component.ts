@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { LanguageService } from '../../services/language.service';
 
 interface EducationItem {
@@ -11,6 +11,7 @@ interface EducationItem {
 }
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-education',
   standalone: true,
   templateUrl: './education.component.html',

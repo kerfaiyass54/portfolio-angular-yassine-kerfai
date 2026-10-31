@@ -1,8 +1,9 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, computed, inject } from '@angular/core';
 import { LanguageService } from '../../services/language.service';
 import { StepItem, StepperComponent } from '../stepper/stepper.component';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-skills',
   standalone: true,
   imports: [StepperComponent],

@@ -1,4 +1,4 @@
-import { Component, computed, inject, viewChild } from '@angular/core';
+import { Component, ChangeDetectionStrategy, computed, inject, viewChild } from '@angular/core';
 import { ActionDialogComponent } from '../../components/action-dialog/action-dialog.component';
 import { EducationComponent } from '../../components/education/education.component';
 import { HeroPageComponent } from '../../components/hero-page/hero-page.component';
@@ -20,6 +20,7 @@ interface PortfolioProject {
 }
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-portfolio-home-page',
   standalone: true,
   imports: [HeroPageComponent, ProfileDetailsComponent, EducationComponent, SkillsComponent, ScrollRevealDirective, ActionDialogComponent, StepperComponent],
