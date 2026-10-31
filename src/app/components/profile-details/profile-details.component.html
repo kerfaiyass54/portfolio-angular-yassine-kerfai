@@ -1,0 +1,34 @@
+<section class="profile-details" aria-labelledby="profile-name">
+  <header class="profile-heading">
+    <div><span class="profile-kicker">01 / A QUICK INTRODUCTION</span><h2>Details, at a glance.</h2></div>
+    <span class="profile-edition">PROFILE <i></i> 2026</span>
+  </header>
+
+  <article class="profile-panel">
+    <div class="profile-overview">
+      <div class="profile-monogram" aria-hidden="true">YK<span>✳</span></div>
+      <div class="profile-identity">
+        <span class="profile-role">SOFTWARE ENGINEER</span>
+        <h3 id="profile-name">Yassine<br /><span>Kerfai.</span></h3>
+        <p>Curious about how thoughtful software gets designed, built, and delivered.</p>
+      </div>
+      <span class="profile-orbit orbit-one" aria-hidden="true"></span>
+      <span class="profile-orbit orbit-two" aria-hidden="true"></span>
+    </div>
+
+    <div class="profile-facts">
+      <div class="profile-fact"><span class="fact-label">PLACE OF LIVING</span><div><span class="country-flag fi fi-de" role="img" aria-label="Flag of Germany"></span><strong>Germany</strong></div></div>
+      <div class="profile-fact"><span class="fact-label">NATIONALITY</span><div><span class="country-flag fi fi-tn" role="img" aria-label="Flag of Tunisia"></span><strong>Tunisian</strong></div></div>
+      <div class="profile-fact"><span class="fact-label">AGE</span><div><i class="bi bi-cake2 fact-icon" aria-hidden="true"></i><strong>25 years old</strong></div></div>
+    </div>
+
+    <div class="profile-interests">
+      <div class="interests-heading"><span class="fact-label">AREAS I’M INTO</span><span class="interest-count">06 <i>/ 06</i></span></div>
+      <div class="interest-list">
+        @for (interest of interests; track interest.name) {
+          <span class="interest-chip"><i [class]="interest.icon" aria-hidden="true"></i>{{ interest.name }}</span>
+        }
+      </div>
+    </div>
+  </article>
+</section>

@@ -1,14 +1,7 @@
 <div class="home-content">
   <app-hero-page />
 
-  <section class="content-section" id="details" appScrollReveal>
-    <div class="section-heading"><div><span class="section-index">01 / A QUICK INTRODUCTION</span><h2>Details, at a glance.</h2></div><p>A little about what I do and what I’m building.</p></div>
-    <div class="detail-grid">
-      @for (item of details; track item.label) {
-        <article class="detail-card"><span class="detail-icon"><i [class]="item.icon" aria-hidden="true"></i></span><span class="detail-label">{{ item.label }}</span><strong>{{ item.value }}</strong><i class="detail-corner bi bi-arrow-up-right" aria-hidden="true"></i></article>
-      }
-    </div>
-  </section>
+  <app-profile-details id="details" appScrollReveal />
 
   <section class="content-section education-section" id="education" appScrollReveal>
     <div class="section-heading"><div><span class="section-index">02 / EDUCATION</span><h2>Always learning.</h2></div><p>The foundations and experiences behind my work.</p></div>
