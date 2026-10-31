@@ -1,8 +1,13 @@
 import { Routes } from '@angular/router';
-import { ComponentsShowcasePage } from './pages/components-showcase/components-showcase.page';
+import { PortfolioHomePage } from './pages/portfolio-home/portfolio-home.page';
+import { PortfolioLayout } from './pages/portfolio-layout/portfolio-layout';
 
 export const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'components' },
-  { path: 'components', component: ComponentsShowcasePage },
-  { path: '**', redirectTo: 'components' },
+  {
+    path: '',
+    component: PortfolioLayout,
+    children: [{ path: '', component: PortfolioHomePage }],
+  },
+  { path: 'components', pathMatch: 'full', redirectTo: '' },
+  { path: '**', redirectTo: '' },
 ];
