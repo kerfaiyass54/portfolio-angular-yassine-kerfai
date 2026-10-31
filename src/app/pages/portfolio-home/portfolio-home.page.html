@@ -48,11 +48,15 @@
   </section>
 
   <section class="content-section links-section" id="links" appScrollReveal>
-    <div class="section-heading"><div><span class="section-index">05 / LINKS</span><h2>Let’s stay in touch.</h2></div><p>Choose a profile and add your details when they’re ready.</p></div>
+    <div class="section-heading"><div><span class="section-index">05 / LINKS</span><h2>Let’s stay in touch.</h2></div><p>Follow the work, explore the repository archive, and keep up with what comes next.</p></div>
     <div class="links-grid">
       @for (link of links; track link.title) {
-        <article class="profile-link"><i [class]="link.icon" aria-hidden="true"></i><span><strong>{{ link.title }}</strong><small>{{ link.note }}</small></span><i class="bi bi-arrow-up-right link-arrow" aria-hidden="true"></i></article>
+        <a class="profile-link" [href]="link.url" target="_blank" rel="noopener noreferrer"><i class="link-icon" [class]="link.icon" aria-hidden="true"></i><span><strong>{{ link.title }}</strong><small>{{ link.note }}</small></span><i class="bi bi-arrow-up-right link-arrow" aria-hidden="true"></i></a>
       }
+    </div>
+    <div class="contact-banner">
+      <div><span class="section-index">OPEN TO GOOD CONVERSATIONS</span><h3>Have an idea worth building?</h3></div>
+      <a href="https://github.com/kerfaiyass54" target="_blank" rel="noopener noreferrer">Start with GitHub <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
     </div>
   </section>
 </div>
