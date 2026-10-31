@@ -5,14 +5,7 @@
 
   <app-education id="education" appScrollReveal />
 
-  <section class="content-section" id="skills" appScrollReveal>
-    <div class="section-heading"><div><span class="section-index">03 / SKILLS & TOOLS</span><h2>Tools I work with.</h2></div><p>A snapshot of the technologies used across this portfolio.</p></div>
-    <div class="skills-grid">
-      @for (skill of skills; track skill.name) {
-        <article class="skill-card"><i [class]="'skill-icon ' + skill.icon" aria-hidden="true"></i><span class="skill-copy"><strong>{{ skill.name }}</strong><small>{{ skill.group }}</small></span><i class="skill-arrow bi bi-arrow-up-right" aria-hidden="true"></i></article>
-      }
-    </div>
-  </section>
+  <app-skills id="skills" appScrollReveal />
 
   <section class="content-section" id="projects" appScrollReveal>
     <div class="section-heading"><div><span class="section-index">04 / SELECTED PROJECTS</span><h2>Made with intention.</h2></div><p>A couple of pieces from this portfolio build.</p></div>
