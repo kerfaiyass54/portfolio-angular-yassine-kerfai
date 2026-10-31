@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input, output } from '@angular/core';
 
 export interface SidebarLink {
   label: string;
@@ -7,6 +7,7 @@ export interface SidebarLink {
 }
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-sidebar',
   standalone: true,
   templateUrl: './sidebar.component.html',

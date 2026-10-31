@@ -1,7 +1,8 @@
-import { Component, inject, input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, input } from '@angular/core';
 import { LanguageService } from '../../services/language.service';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-hero-page',
   standalone: true,
   templateUrl: './hero-page.component.html',

@@ -1,4 +1,4 @@
-import { Component, inject, input, output, signal } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, input, output, signal } from '@angular/core';
 import { LanguageService } from '../../services/language.service';
 
 export interface StepItem {
@@ -10,6 +10,7 @@ export interface StepItem {
 }
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-stepper',
   standalone: true,
   templateUrl: './stepper.component.html',

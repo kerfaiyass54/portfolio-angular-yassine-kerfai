@@ -1,9 +1,10 @@
-import { AfterViewInit, Component, HostListener, OnDestroy, computed, inject, signal } from '@angular/core';
+import { AfterViewInit, Component, ChangeDetectionStrategy, HostListener, OnDestroy, computed, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SidebarComponent, SidebarLink } from '../../components/sidebar/sidebar.component';
 import { LanguageService } from '../../services/language.service';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-portfolio-layout',
   standalone: true,
   imports: [RouterOutlet, SidebarComponent],

@@ -1,6 +1,7 @@
-import { Component, input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input } from '@angular/core';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-flip-card',
   standalone: true,
   templateUrl: './flip-card.component.html',
