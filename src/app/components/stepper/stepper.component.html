@@ -2,10 +2,12 @@
   <div class="step-track">
     @for (step of steps(); track $index; let i = $index) {
       <button class="step-trigger" type="button" [class.current]="i === activeIndex()" [class.complete]="i < activeIndex()" [attr.aria-current]="i === activeIndex() ? 'step' : null" (click)="selectStep(i)">
-        <span class="step-number">
-          @if (i < activeIndex()) { <i class="bi bi-check2" aria-hidden="true"></i> }
-          @else { {{ (i + 1).toString().padStart(2, '0') }} }
-        </span>
+        @if (showStepNumbers()) {
+          <span class="step-number">
+            @if (i < activeIndex()) { <i class="bi bi-check2" aria-hidden="true"></i> }
+            @else { {{ (i + 1).toString().padStart(2, '0') }} }
+          </span>
+        }
         <span class="step-name">{{ step.title }}</span>
       </button>
       @if (i < steps().length - 1) { <span class="step-line" [class.filled]="i < activeIndex()" aria-hidden="true"></span> }
@@ -17,14 +19,14 @@
 
   @if (steps()[activeIndex()]; as current) {
     <div class="step-content" [class.has-step-items]="(current.items?.length ?? 0) > 0" aria-live="polite">
-      <div class="step-content-top"><span class="content-eyebrow">YOUR PROJECT, STEP BY STEP</span><span class="step-count">{{ (activeIndex() + 1).toString().padStart(2, '0') }} <span>/ {{ steps().length.toString().padStart(2, '0') }}</span></span></div>
+      <div class="step-content-top"><span class="content-eyebrow">YOUR PROJECT, STEP BY STEP</span>@if (showStepNumbers()) { <span class="step-count">{{ (activeIndex() + 1).toString().padStart(2, '0') }} <span>/ {{ steps().length.toString().padStart(2, '0') }}</span></span> }</div>
       <h3>{{ current.title }}</h3>
       @if (current.description) { <p class="step-description">{{ current.description }}</p> }
       @if (current.content) { <p class="step-body">{{ current.content }}</p> }
       @if (current.items?.length) {
         <ul class="step-items" aria-label="Items in this step">
           @for (item of current.items; track item.name) {
-            <li class="step-item" [style.--item-index]="$index"><i [class]="item.icon" aria-hidden="true"></i><span>{{ item.name }}</span></li>
+            <li class="step-item" [style.--item-index]="$index" [attr.aria-label]="item.name" [attr.title]="item.name"><i [class]="item.icon" aria-hidden="true"></i><span>{{ item.name }}</span></li>
           }
         </ul>
       }

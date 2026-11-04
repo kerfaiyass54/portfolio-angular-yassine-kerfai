@@ -17,6 +17,7 @@ export class StepperComponent {
   readonly steps = input.required<StepItem[]>();
   readonly showNavigationControls = input(true);
   readonly large = input(false);
+  readonly showStepNumbers = input(true);
   readonly stepChange = output<number>();
   readonly completed = output<void>();
   protected readonly activeIndex = signal(0);
