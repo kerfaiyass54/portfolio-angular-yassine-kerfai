@@ -1,0 +1,31 @@
+<section class="loader-screen" [class.is-done]="isDone()" aria-label="Loading portfolio" aria-live="polite">
+  <div class="loader-grid" aria-hidden="true"></div>
+  <div class="loader-orbit orbit-one" aria-hidden="true"></div>
+  <div class="loader-orbit orbit-two" aria-hidden="true"></div>
+
+  <div class="loader-content">
+    <div class="loader-topline">
+      <span><i></i> SYSTEM / PORTFOLIO</span>
+      <span>YK — 2026</span>
+    </div>
+
+    <div class="loader-terminal">
+      <div class="terminal-bar"><span></span><span></span><span></span><small>booting creative.engine</small></div>
+      <div class="terminal-line"><span class="prompt">></span> <span>initializing</span><strong>portfolio.exe</strong><b class="cursor"></b></div>
+      <div class="terminal-output">designing thoughtful digital experiences<span class="dots">...</span></div>
+    </div>
+
+    <div class="loader-brand">
+      <span class="brand-mark">YK</span>
+      <div><span class="loader-kicker">SOFTWARE ENGINEER</span><h1>Yassine <em>KERFAI</em></h1></div>
+    </div>
+
+    <div class="progress-area">
+      <div class="progress-label"><span>LOADING EXPERIENCE</span><strong>{{ progress() }}%</strong></div>
+      <div class="progress-track"><span [style.width.%]="progress()"></span></div>
+      <div class="progress-status"><span>{{ progress() < 35 ? 'connecting modules' : progress() < 70 ? 'assembling interface' : progress() < 100 ? 'polishing details' : 'ready to explore' }}</span><span>please wait</span></div>
+    </div>
+  </div>
+
+  <div class="loader-footer"><span>BUILD WITH INTENTION</span><span>ANGULAR <i>✳</i> TYPESCRIPT</span></div>
+</section>
