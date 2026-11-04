@@ -1,4 +1,13 @@
-import { AfterViewInit, Component, ChangeDetectionStrategy, HostListener, OnDestroy, computed, inject, signal } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ChangeDetectionStrategy,
+  HostListener,
+  OnDestroy,
+  computed,
+  inject,
+  signal,
+} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SidebarComponent, SidebarLink } from '../../components/sidebar/sidebar.component';
 import { LanguageService } from '../../services/language.service';
@@ -24,7 +33,10 @@ export class PortfolioLayout implements AfterViewInit, OnDestroy {
     { label: this.i18n.text('nav.links'), icon: 'bi bi-link-45deg', href: '#links' },
   ]);
   protected readonly languageOptions = [
-    { code: 'en', label: 'EN' }, { code: 'fr', label: 'FR' }, { code: 'ar', label: 'AR' }, { code: 'de', label: 'DE' },
+    { code: 'en', label: 'EN' },
+    { code: 'fr', label: 'FR' },
+    { code: 'ar', label: 'AR' },
+    { code: 'de', label: 'DE' },
   ];
 
   protected toggleTheme(): void {
@@ -32,14 +44,18 @@ export class PortfolioLayout implements AfterViewInit, OnDestroy {
     document.documentElement.dataset['theme'] = this.darkMode() ? 'dark' : 'light';
   }
 
-  protected changeLanguage(language: string): void { this.i18n.setLanguage(language); }
+  protected changeLanguage(language: string): void {
+    this.i18n.setLanguage(language);
+  }
 
   protected onSidebarClick(event: MouseEvent): void {
     const href = (event.target as HTMLElement).closest('a')?.getAttribute('href');
     if (href) this.activeHref.set(href);
   }
 
-  ngAfterViewInit(): void { this.updateActiveSection(); }
+  ngAfterViewInit(): void {
+    this.updateActiveSection();
+  }
 
   @HostListener('window:scroll')
   protected updateActiveSection(): void {

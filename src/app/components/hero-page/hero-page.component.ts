@@ -13,5 +13,7 @@ export class HeroPageComponent {
   readonly title = input('Portfolio');
   readonly name = input('Yassine KERFAI.');
   readonly role = input('Software engineer');
-  readonly description = input('I build clear, useful digital experiences and the thoughtful details that make them feel right.');
+  readonly description = input(
+    'I build clear, useful digital experiences and the thoughtful details that make them feel right.',
+  );
 }

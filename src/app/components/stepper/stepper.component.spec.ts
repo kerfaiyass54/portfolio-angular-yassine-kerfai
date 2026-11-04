@@ -18,7 +18,9 @@ describe('StepperComponent', () => {
 
     expect(fixture.nativeElement.textContent).toContain('First step');
     expect(fixture.nativeElement.textContent).toContain('First description');
-    expect(fixture.nativeElement.querySelector('[role="progressbar"]').getAttribute('aria-valuenow')).toBe('1');
+    expect(
+      fixture.nativeElement.querySelector('[role="progressbar"]').getAttribute('aria-valuenow'),
+    ).toBe('1');
   });
 
   it('moves to the next step and emits stepChange', () => {

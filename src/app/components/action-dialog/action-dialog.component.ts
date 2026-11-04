@@ -1,4 +1,12 @@
-import { Component, ChangeDetectionStrategy, ElementRef, inject, input, output, viewChild } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  ElementRef,
+  inject,
+  input,
+  output,
+  viewChild,
+} from '@angular/core';
 import { LanguageService } from '../../services/language.service';
 
 @Component({
@@ -20,9 +28,16 @@ export class ActionDialogComponent {
   readonly confirmed = output<void>();
   readonly closed = output<void>();
 
-  openDialog(): void { this.dialogRef().nativeElement.showModal(); }
-  closeDialog(): void { this.dialogRef().nativeElement.close(); }
-  confirm(): void { this.confirmed.emit(); this.closeDialog(); }
+  openDialog(): void {
+    this.dialogRef().nativeElement.showModal();
+  }
+  closeDialog(): void {
+    this.dialogRef().nativeElement.close();
+  }
+  confirm(): void {
+    this.confirmed.emit();
+    this.closeDialog();
+  }
   onBackdropClick(event: MouseEvent): void {
     if (event.target === this.dialogRef().nativeElement) this.closeDialog();
   }

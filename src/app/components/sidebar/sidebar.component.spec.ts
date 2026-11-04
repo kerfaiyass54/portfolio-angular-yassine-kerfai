@@ -8,7 +8,9 @@ describe('SidebarComponent', () => {
 
   it('renders navigation links and marks the active link', () => {
     const fixture = TestBed.createComponent(SidebarComponent);
-    fixture.componentRef.setInput('links', [{ label: 'Projects', icon: 'bi bi-grid', href: '#projects' }]);
+    fixture.componentRef.setInput('links', [
+      { label: 'Projects', icon: 'bi bi-grid', href: '#projects' },
+    ]);
     fixture.componentRef.setInput('activeHref', '#projects');
     fixture.detectChanges();
 
@@ -23,8 +25,9 @@ describe('SidebarComponent', () => {
     fixture.componentInstance.languageChange.subscribe(languageChange);
     fixture.detectChanges();
 
-    const frenchButton = [...fixture.nativeElement.querySelectorAll('.language-switch button')]
-      .find((button: HTMLButtonElement) => button.textContent.trim() === 'FR') as HTMLButtonElement;
+    const frenchButton = [
+      ...fixture.nativeElement.querySelectorAll('.language-switch button'),
+    ].find((button: HTMLButtonElement) => button.textContent.trim() === 'FR') as HTMLButtonElement;
     frenchButton.click();
 
     expect(languageChange).toHaveBeenCalledWith('fr');

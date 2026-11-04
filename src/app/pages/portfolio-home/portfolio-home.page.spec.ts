@@ -30,13 +30,19 @@ describe('PortfolioHomePage', () => {
 
     fixture.nativeElement.querySelector('[aria-label="Next project"]').click();
     fixture.detectChanges();
-    expect(fixture.nativeElement.querySelector('.project-title').textContent).toContain('Vehicle Rental Application');
+    expect(fixture.nativeElement.querySelector('.project-title').textContent).toContain(
+      'Vehicle Rental Application',
+    );
 
-    const analyticsDot = [...fixture.nativeElement.querySelectorAll('.carousel-dots button')]
-      .find((button: HTMLButtonElement) => button.getAttribute('aria-label') === 'Show Google Play Analytics') as HTMLButtonElement;
+    const analyticsDot = [...fixture.nativeElement.querySelectorAll('.carousel-dots button')].find(
+      (button: HTMLButtonElement) =>
+        button.getAttribute('aria-label') === 'Show Google Play Analytics',
+    ) as HTMLButtonElement;
     analyticsDot.click();
     fixture.detectChanges();
 
-    expect(fixture.nativeElement.querySelector('.project-title').textContent).toContain('Google Play Analytics');
+    expect(fixture.nativeElement.querySelector('.project-title').textContent).toContain(
+      'Google Play Analytics',
+    );
   });
 });

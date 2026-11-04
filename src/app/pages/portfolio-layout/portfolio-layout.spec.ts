@@ -28,7 +28,9 @@ describe('PortfolioLayout', () => {
     toggle.click();
     fixture.detectChanges();
 
-    expect(fixture.nativeElement.querySelector('.portfolio-shell').classList).toContain('dark-theme');
+    expect(fixture.nativeElement.querySelector('.portfolio-shell').classList).toContain(
+      'dark-theme',
+    );
     expect(document.documentElement.dataset['theme']).toBe('dark');
 
     fixture.destroy();
@@ -40,12 +42,15 @@ describe('PortfolioLayout', () => {
     fixture.detectChanges();
     const language = TestBed.inject(LanguageService);
 
-    const frenchButton = [...fixture.nativeElement.querySelectorAll('.language-switch button')]
-      .find((button: HTMLButtonElement) => button.textContent.trim() === 'FR') as HTMLButtonElement;
+    const frenchButton = [
+      ...fixture.nativeElement.querySelectorAll('.language-switch button'),
+    ].find((button: HTMLButtonElement) => button.textContent.trim() === 'FR') as HTMLButtonElement;
     frenchButton.click();
     fixture.detectChanges();
 
     expect(language.language()).toBe('fr');
-    expect(fixture.nativeElement.querySelector('.portfolio-brand').textContent).toContain('Yassine Kerfai');
+    expect(fixture.nativeElement.querySelector('.portfolio-brand').textContent).toContain(
+      'Yassine Kerfai',
+    );
   });
 });

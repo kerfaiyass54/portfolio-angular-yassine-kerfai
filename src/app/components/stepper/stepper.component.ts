@@ -32,7 +32,9 @@ export class StepperComponent {
       this.stepChange.emit(index);
     }
   }
-  previous(): void { this.selectStep(this.activeIndex() - 1); }
+  previous(): void {
+    this.selectStep(this.activeIndex() - 1);
+  }
   next(): void {
     if (this.activeIndex() === this.steps().length - 1) this.completed.emit();
     else this.selectStep(this.activeIndex() + 1);

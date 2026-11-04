@@ -20,8 +20,28 @@ interface EducationItem {
 export class EducationComponent {
   protected readonly i18n = inject(LanguageService);
   protected readonly education: EducationItem[] = [
-    { number: '01', name: 'École Nationale d’Ingénieurs de Tunis', shortName: 'ENIT', qualificationKey: 'education.engineering', graduationYear: '2024', href: 'https://enit.rnu.tn/' },
-    { number: '02', name: 'Institut Préparatoire aux Études d’Ingénieurs d’El Manar', shortName: 'IPEIEM', qualificationKey: 'education.preparatory', graduationYear: '2021', href: 'https://ipeiem.rnu.tn/' },
-    { number: '03', name: 'Lycée Laouina', shortName: 'LYCÉE', qualificationKey: 'education.baccalaureate', graduationYear: '2019' },
+    {
+      number: '01',
+      name: 'École Nationale d’Ingénieurs de Tunis',
+      shortName: 'ENIT',
+      qualificationKey: 'education.engineering',
+      graduationYear: '2024',
+      href: 'https://enit.rnu.tn/',
+    },
+    {
+      number: '02',
+      name: 'Institut Préparatoire aux Études d’Ingénieurs d’El Manar',
+      shortName: 'IPEIEM',
+      qualificationKey: 'education.preparatory',
+      graduationYear: '2021',
+      href: 'https://ipeiem.rnu.tn/',
+    },
+    {
+      number: '03',
+      name: 'Lycée Laouina',
+      shortName: 'LYCÉE',
+      qualificationKey: 'education.baccalaureate',
+      graduationYear: '2019',
+    },
   ];
 }

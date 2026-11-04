@@ -1,5 +1,8 @@
 <article class="info-card">
-  <div class="card-topline"><span class="card-index">{{ index() }}</span><span class="card-icon"><i [class]="icon()" aria-hidden="true"></i></span></div>
+  <div class="card-topline">
+    <span class="card-index">{{ index() }}</span
+    ><span class="card-icon"><i [class]="icon()" aria-hidden="true"></i></span>
+  </div>
   <p class="card-kicker">{{ kicker() }}</p>
   <h3>{{ title() }}</h3>
   <p class="card-description"><ng-content /></p>

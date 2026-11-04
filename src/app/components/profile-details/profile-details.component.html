@@ -1,21 +1,57 @@
 <section class="profile-details" aria-labelledby="profile-name">
   <header class="profile-heading">
-    <div><span class="profile-kicker">{{ i18n.text('profile.kicker') }}</span><h2>{{ i18n.text('profile.title') }}</h2></div>
+    <div>
+      <span class="profile-kicker">{{ i18n.text('profile.kicker') }}</span>
+      <h2>{{ i18n.text('profile.title') }}</h2>
+    </div>
     <span class="profile-edition">{{ i18n.text('profile.edition') }} <i></i> 2026</span>
   </header>
   <article class="profile-panel">
     <div class="profile-overview">
       <div class="profile-monogram" aria-hidden="true">YK<span>✳</span></div>
-      <div class="profile-identity"><span class="profile-role">{{ i18n.text('role') }}</span><h3 id="profile-name">{{ i18n.text('name.display') }}</h3><p>{{ i18n.text('profile.bio') }}</p></div>
-      <span class="profile-orbit orbit-one" aria-hidden="true"></span><span class="profile-orbit orbit-two" aria-hidden="true"></span>
+      <div class="profile-identity">
+        <span class="profile-role">{{ i18n.text('role') }}</span>
+        <h3 id="profile-name">{{ i18n.text('name.display') }}</h3>
+        <p>{{ i18n.text('profile.bio') }}</p>
+      </div>
+      <span class="profile-orbit orbit-one" aria-hidden="true"></span
+      ><span class="profile-orbit orbit-two" aria-hidden="true"></span>
     </div>
     <div class="profile-facts">
-      <div class="profile-fact"><span class="fact-label">{{ i18n.text('profile.location') }}</span><div><span class="fi fi-de country-flag" aria-hidden="true"></span><strong>{{ i18n.text('profile.germany') }}</strong></div></div>
-      <div class="profile-fact"><span class="fact-label">{{ i18n.text('profile.nationality') }}</span><div><span class="fi fi-tn country-flag" aria-hidden="true"></span><strong>{{ i18n.text('profile.tunisian') }}</strong></div></div>
-      <div class="profile-fact"><span class="fact-label">{{ i18n.text('profile.age') }}</span><div><i class="bi bi-cake2 fact-icon" aria-hidden="true"></i><strong>{{ i18n.text('profile.ageValue') }}</strong></div></div>
+      <div class="profile-fact">
+        <span class="fact-label">{{ i18n.text('profile.location') }}</span>
+        <div>
+          <span class="fi fi-de country-flag" aria-hidden="true"></span
+          ><strong>{{ i18n.text('profile.germany') }}</strong>
+        </div>
+      </div>
+      <div class="profile-fact">
+        <span class="fact-label">{{ i18n.text('profile.nationality') }}</span>
+        <div>
+          <span class="fi fi-tn country-flag" aria-hidden="true"></span
+          ><strong>{{ i18n.text('profile.tunisian') }}</strong>
+        </div>
+      </div>
+      <div class="profile-fact">
+        <span class="fact-label">{{ i18n.text('profile.age') }}</span>
+        <div>
+          <i class="bi bi-cake2 fact-icon" aria-hidden="true"></i
+          ><strong>{{ i18n.text('profile.ageValue') }}</strong>
+        </div>
+      </div>
     </div>
-    <div class="profile-interests"><div class="interests-heading"><span class="fact-label">{{ i18n.text('profile.interests') }}</span><span class="interest-count">06 <i>/ 06</i></span></div>
-      <div class="interest-list">@for (interest of interests(); track interest.name) { <span class="interest-chip"><i [class]="interest.icon" aria-hidden="true"></i>{{ interest.name }}</span> }</div>
+    <div class="profile-interests">
+      <div class="interests-heading">
+        <span class="fact-label">{{ i18n.text('profile.interests') }}</span
+        ><span class="interest-count">06 <i>/ 06</i></span>
+      </div>
+      <div class="interest-list">
+        @for (interest of interests(); track interest.name) {
+          <span class="interest-chip"
+            ><i [class]="interest.icon" aria-hidden="true"></i>{{ interest.name }}</span
+          >
+        }
+      </div>
     </div>
   </article>
 </section>

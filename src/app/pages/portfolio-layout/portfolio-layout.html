@@ -20,10 +20,19 @@
     <header class="portfolio-bar">
       <a class="portfolio-brand" href="#hero" [attr.aria-label]="i18n.text('nav.home')">
         <span class="brand-mark">YK</span>
-        <span><strong>{{ i18n.text('name.display') }}</strong><small>{{ i18n.text('role') }}</small></span>
+        <span
+          ><strong>{{ i18n.text('name.display') }}</strong
+          ><small>{{ i18n.text('role') }}</small></span
+        >
       </a>
       <span class="bar-caption">{{ i18n.text('layout.portfolio') }} <i></i> 2026</span>
-      <button class="theme-toggle" type="button" (click)="toggleTheme()" [attr.aria-pressed]="darkMode()" [attr.aria-label]="darkMode() ? i18n.text('theme.light') : i18n.text('theme.dark')">
+      <button
+        class="theme-toggle"
+        type="button"
+        (click)="toggleTheme()"
+        [attr.aria-pressed]="darkMode()"
+        [attr.aria-label]="darkMode() ? i18n.text('theme.light') : i18n.text('theme.dark')"
+      >
         <i [class]="darkMode() ? 'bi bi-sun' : 'bi bi-moon-stars'" aria-hidden="true"></i>
         <span>{{ darkMode() ? i18n.text('theme.light') : i18n.text('theme.dark') }}</span>
       </button>
@@ -31,6 +40,9 @@
 
     <main class="portfolio-main"><router-outlet /></main>
 
-    <footer class="portfolio-footer"><span>{{ i18n.text('name.display') }}</span><span>{{ i18n.text('layout.footer') }} <i>✳</i></span></footer>
+    <footer class="portfolio-footer">
+      <span>{{ i18n.text('name.display') }}</span
+      ><span>{{ i18n.text('layout.footer') }} <i>✳</i></span>
+    </footer>
   </div>
 </div>

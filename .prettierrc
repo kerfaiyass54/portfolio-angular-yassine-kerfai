@@ -1,11 +1,29 @@
 {
   "printWidth": 100,
   "singleQuote": true,
+  "semi": true,
+  "tabWidth": 2,
+  "useTabs": false,
+  "trailingComma": "all",
+  "bracketSpacing": true,
+  "bracketSameLine": false,
   "overrides": [
     {
-      "files": "*.html",
+      "files": ["*.html", "**/*.html"],
       "options": {
         "parser": "angular"
+      }
+    },
+    {
+      "files": ["*.ts", "**/*.ts"],
+      "options": {
+        "parser": "typescript"
+      }
+    },
+    {
+      "files": ["*.css", "**/*.css"],
+      "options": {
+        "parser": "css"
       }
     }
   ]

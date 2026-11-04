@@ -3,7 +3,9 @@
     <section class="face front">
       <span class="face-label">{{ frontLabel() }}</span>
       <div class="front-content"><ng-content select="[card-front]" /></div>
-      <span class="flip-hint"><i class="bi bi-arrow-repeat" aria-hidden="true"></i> Hover or focus to turn</span>
+      <span class="flip-hint"
+        ><i class="bi bi-arrow-repeat" aria-hidden="true"></i> Hover or focus to turn</span
+      >
     </section>
     <section class="face back">
       <span class="face-label">{{ backLabel() }}</span>

@@ -5,38 +5,139 @@
   <app-skills id="skills" appScrollReveal />
 
   <section class="content-section" id="projects" appScrollReveal>
-    <div class="section-heading"><div><span class="section-index">{{ i18n.text('projects.kicker') }}</span><h2>{{ i18n.text('projects.title') }}</h2></div><p>{{ i18n.text('projects.description') }}</p></div>
-    <div class="projects-summary"><span><strong>{{ projects.length }}</strong> {{ i18n.text('projects.summary') }}</span><span class="summary-dot" aria-hidden="true"></span><span>{{ i18n.text('projects.selected') }}</span></div>
+    <div class="section-heading">
+      <div>
+        <span class="section-index">{{ i18n.text('projects.kicker') }}</span>
+        <h2>{{ i18n.text('projects.title') }}</h2>
+      </div>
+      <p>{{ i18n.text('projects.description') }}</p>
+    </div>
+    <div class="projects-summary">
+      <span
+        ><strong>{{ projects.length }}</strong> {{ i18n.text('projects.summary') }}</span
+      ><span class="summary-dot" aria-hidden="true"></span
+      ><span>{{ i18n.text('projects.selected') }}</span>
+    </div>
     <div class="projects-carousel" [attr.aria-label]="i18n.text('projects.aria')">
-      <button class="carousel-control" type="button" [attr.aria-label]="i18n.text('projects.previous')" (click)="previousProject()"><i class="bi bi-arrow-left" aria-hidden="true"></i></button>
-      <div class="projects-viewport"><div class="projects-track" [class]="'projects-track carousel-' + carouselDirection + '-' + carouselAnimationKey">
-        @for (project of visibleProjects; track project.number) {
-          <button class="project-card" type="button" (click)="openProject(project)">
-            <span class="project-card-top"><span class="project-number">{{ project.number }}</span><i [class]="project.icon" aria-hidden="true"></i></span>
-            <span class="project-type">{{ project.type }}</span><span class="project-title">{{ project.title }}</span><span class="project-card-description">{{ project.description }}</span>
-            <span class="project-tags">@for (tag of project.tags; track tag) { <span>{{ tag }}</span> }</span>
-            <span class="project-cta">{{ i18n.text('projects.view') }} <i class="bi bi-arrow-up-right" aria-hidden="true"></i></span>
-          </button>
-        }
-      </div></div>
-      <button class="carousel-control" type="button" [attr.aria-label]="i18n.text('projects.next')" (click)="nextProject()"><i class="bi bi-arrow-right" aria-hidden="true"></i></button>
+      <button
+        class="carousel-control"
+        type="button"
+        [attr.aria-label]="i18n.text('projects.previous')"
+        (click)="previousProject()"
+      >
+        <i class="bi bi-arrow-left" aria-hidden="true"></i>
+      </button>
+      <div class="projects-viewport">
+        <div
+          class="projects-track"
+          [class]="'projects-track carousel-' + carouselDirection + '-' + carouselAnimationKey"
+        >
+          @for (project of visibleProjects; track project.number) {
+            <button class="project-card" type="button" (click)="openProject(project)">
+              <span class="project-card-top"
+                ><span class="project-number">{{ project.number }}</span
+                ><i [class]="project.icon" aria-hidden="true"></i
+              ></span>
+              <span class="project-type">{{ project.type }}</span
+              ><span class="project-title">{{ project.title }}</span
+              ><span class="project-card-description">{{ project.description }}</span>
+              <span class="project-tags">
+                @for (tag of project.tags; track tag) {
+                  <span>{{ tag }}</span>
+                }
+              </span>
+              <span class="project-cta"
+                >{{ i18n.text('projects.view') }}
+                <i class="bi bi-arrow-up-right" aria-hidden="true"></i
+              ></span>
+            </button>
+          }
+        </div>
+      </div>
+      <button
+        class="carousel-control"
+        type="button"
+        [attr.aria-label]="i18n.text('projects.next')"
+        (click)="nextProject()"
+      >
+        <i class="bi bi-arrow-right" aria-hidden="true"></i>
+      </button>
     </div>
     <div class="carousel-dots" [attr.aria-label]="i18n.text('projects.aria')">
-      @for (project of projects; track project.number; let index = $index) { <button type="button" [class.is-active]="index === activeProjectIndex" [attr.aria-label]="i18n.text('projects.show') + ' ' + project.title" (click)="activeProjectIndex = index"></button> }
+      @for (project of projects; track project.number; let index = $index) {
+        <button
+          type="button"
+          [class.is-active]="index === activeProjectIndex"
+          [attr.aria-label]="i18n.text('projects.show') + ' ' + project.title"
+          (click)="activeProjectIndex = index"
+        ></button>
+      }
     </div>
-    <div class="projects-story"><div class="story-intro"><span class="section-index">{{ i18n.text('projects.story') }}</span><h3>{{ i18n.text('projects.storyTitle') }}</h3></div>
-      <div class="story-stats"><div><strong>07</strong><span>{{ i18n.text('projects.builds') }}</span></div><div><strong>04</strong><span>{{ i18n.text('projects.disciplines') }}</span></div><div><strong>∞</strong><span>{{ i18n.text('projects.learning') }}</span></div></div>
+    <div class="projects-story">
+      <div class="story-intro">
+        <span class="section-index">{{ i18n.text('projects.story') }}</span>
+        <h3>{{ i18n.text('projects.storyTitle') }}</h3>
+      </div>
+      <div class="story-stats">
+        <div>
+          <strong>07</strong><span>{{ i18n.text('projects.builds') }}</span>
+        </div>
+        <div>
+          <strong>04</strong><span>{{ i18n.text('projects.disciplines') }}</span>
+        </div>
+        <div>
+          <strong>∞</strong><span>{{ i18n.text('projects.learning') }}</span>
+        </div>
+      </div>
     </div>
     @if (selectedProject; as project) {
-      <app-action-dialog #projectDialog [showLauncher]="false" [kicker]="project.type" [title]="project.title" [confirmLabel]="i18n.text('projects.dialogOpen')" [cancelLabel]="i18n.text('projects.dialogClose')" (confirmed)="openRepository()" (closed)="clearSelectedProject()">
-        <app-stepper [class]="'stepper-' + project.animation" [steps]="projectSteps(project)" [showNavigationControls]="true" [large]="false" />
+      <app-action-dialog
+        #projectDialog
+        [showLauncher]="false"
+        [kicker]="project.type"
+        [title]="project.title"
+        [confirmLabel]="i18n.text('projects.dialogOpen')"
+        [cancelLabel]="i18n.text('projects.dialogClose')"
+        (confirmed)="openRepository()"
+        (closed)="clearSelectedProject()"
+      >
+        <app-stepper
+          [class]="'stepper-' + project.animation"
+          [steps]="projectSteps(project)"
+          [showNavigationControls]="true"
+          [large]="false"
+        />
       </app-action-dialog>
     }
   </section>
 
   <section class="content-section links-section" id="links" appScrollReveal>
-    <div class="section-heading"><div><span class="section-index">{{ i18n.text('links.kicker') }}</span><h2>{{ i18n.text('links.title') }}</h2></div><p>{{ i18n.text('links.description') }}</p></div>
-    <div class="links-grid">@for (link of links(); track link.title) { <a class="profile-link" [href]="link.url" target="_blank" rel="noopener noreferrer"><i class="link-icon" [class]="link.icon" aria-hidden="true"></i><span><strong>{{ link.title }}</strong><small>{{ link.note }}</small></span><i class="bi bi-arrow-up-right link-arrow" aria-hidden="true"></i></a> }</div>
-    <div class="contact-banner"><div><span class="section-index">{{ i18n.text('contact.kicker') }}</span><h3>{{ i18n.text('contact.title') }}</h3></div><a href="https://github.com/kerfaiyass54" target="_blank" rel="noopener noreferrer">{{ i18n.text('contact.action') }} <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a></div>
+    <div class="section-heading">
+      <div>
+        <span class="section-index">{{ i18n.text('links.kicker') }}</span>
+        <h2>{{ i18n.text('links.title') }}</h2>
+      </div>
+      <p>{{ i18n.text('links.description') }}</p>
+    </div>
+    <div class="links-grid">
+      @for (link of links(); track link.title) {
+        <a class="profile-link" [href]="link.url" target="_blank" rel="noopener noreferrer"
+          ><i class="link-icon" [class]="link.icon" aria-hidden="true"></i
+          ><span
+            ><strong>{{ link.title }}</strong
+            ><small>{{ link.note }}</small></span
+          ><i class="bi bi-arrow-up-right link-arrow" aria-hidden="true"></i
+        ></a>
+      }
+    </div>
+    <div class="contact-banner">
+      <div>
+        <span class="section-index">{{ i18n.text('contact.kicker') }}</span>
+        <h3>{{ i18n.text('contact.title') }}</h3>
+      </div>
+      <a href="https://github.com/kerfaiyass54" target="_blank" rel="noopener noreferrer"
+        >{{ i18n.text('contact.action') }} <i class="bi bi-arrow-up-right" aria-hidden="true"></i
+      ></a>
+    </div>
   </section>
 </div>
